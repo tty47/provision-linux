@@ -1,0 +1,39 @@
+---
+ - name: Update Cache
+   apt:
+     update_cache: yes
+     
+ - name: Install terminator
+   apt:
+     name: terminator
+     state: present
+
+ - name: Copy terminator configuration
+   ansible.builtin.copy:
+     src: ../files/terminator/config
+     dest: "/home/{{ username }}/.config/terminator/config"
+     owner: "{{ username }}"
+     group: "{{ username }}"
+     mode: '0644'
+
+ - name: Setup Tunning
+   apt:
+     name: "{{item}}"
+     state: present
+   loop:
+     - gnome-tweak-tool
+     - chrome-gnome-shell
+     - gnome-weather 
+     - gnome-clocks
+     - pavucontrol
+     - gir1.2-gtop-2.0 
+     - gir1.2-nm-1.0 
+     - gir1.2-clutter-1.0
+
+ - name: Copy GTK-3.0 styles
+   ansible.builtin.copy:
+     src: ../files/gkt-3.0/gtk.css
+     dest: "/home/{{ username }}/.config/gtk-3.0/gkt.css"
+     owner: "{{ username }}"
+     group: "{{ username }}"
+     mode: '0644'

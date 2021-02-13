@@ -1,0 +1,71 @@
+---
+ - name: Update Cache
+   apt:
+     update_cache: yes
+
+ - name: Install Applications
+   apt:
+     name: "{{item}}"
+     state: present
+     update_cache: yes
+   loop:
+     - apt-transport-https
+     - htop
+     - net-tools
+     - docker
+     - docker-compose
+     - ansible
+     - neofetch
+     - kubectl
+     - vlc
+     - google-chrome-stable
+     - terraform
+
+ - name: Add Chrome repository
+   ansible.builtin.apt_repository:
+    repo: "{{ item }}"
+    state: present
+   loop:
+    - "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main"
+    - "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main"
+
+ - name: Install Dev Utils
+   apt:
+     name: "{{item}}"
+     state: present
+   loop:
+     - software-properties-common
+     - apt-transport-https
+     - git
+     - pip
+     - python
+     - python3
+     - build-essential
+     - zlib1g-dev
+     - libncurses5-dev
+     - libgdbm-dev
+     - libnss3-dev
+     - libssl-dev
+     - libreadline-dev
+     - libffi-dev
+     - wget
+     - curl
+     - build-essential
+     - libssl-dev
+     - python-dev
+     - nano
+     - unrar
+     - zip
+     - unzip
+     - rar
+     - jq
+     - code
+
+ - name: Install FrontEnd Development tools
+   apt:
+     name: "{{item}}"
+     state: present
+   loop:
+     - nodejs
+     - npm
+     - yarn 

@@ -1,0 +1,44 @@
+ [global_config]
+  dbus = False
+  handle_size = 1
+[keybindings]
+  go_next = <Primary>n
+  go_prev = <Primary>b
+  split_horiz = <Primary><Shift>d
+  split_vert = <Primary><Shift>i
+  close_term = <Alt>w
+  close_window = <Alt>q
+  switch_to_tab_1 = <Alt>1
+  switch_to_tab_2 = <Alt>2
+  switch_to_tab_3 = <Alt>3
+  switch_to_tab_4 = <Alt>4
+  switch_to_tab_5 = <Alt>5
+  full_screen = <Alt>Return
+  new_window = <Primary><Shift>n
+[profiles]
+  [[default]]
+    background_color = "#002b36"
+    background_darkness = 1.0
+    background_type = transparent
+    cursor_color = "#aaaaaa"
+    foreground_color = "#839496"
+    show_titlebar = False
+    scrollback_infinite = True
+    palette = "#204a87:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#555753:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
+  [[JR]]
+    background_color = "#00222b"
+    background_darkness = 0.98
+    cursor_color = "#aaaaaa"
+    foreground_color = "#839496"
+    show_titlebar = False
+    scrollback_infinite = True
+    palette = "#204a87:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#555753:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
+[layouts]
+  [[default]]
+    [[[window0]]]
+      type = Window
+      parent = ""
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+[plugins]

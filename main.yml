@@ -1,0 +1,15 @@
+---
+- hosts: localhost
+  become: true
+  vars:
+    #username: "joseramon"
+
+  tasks:
+   - name: Setup
+     import_tasks: "./stages/setup.yml"
+   - name: Vim
+     import_tasks: "./stages/vim.yml"
+   - name: ZSH
+     import_tasks: "./stages/zsh.yml"
+   - name: Tunning
+     import_tasks: "./stages/tools_tunning.yml"
