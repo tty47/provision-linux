@@ -21,7 +21,7 @@
    #become_user: "{{ username }}"
    shell: "chsh -s $(which zsh)"
    
- - name: Download ZSH
+ - name: Download ZSH Plugins
    get_url:
      url: "{{ item }}"
      dest: "/home/{{ username }}/.oh-my-zsh/custom/plugins/"
