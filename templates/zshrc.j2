@@ -140,7 +140,6 @@ alias kgn="kubectl get ns"
 alias dkall="docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)"
 alias d="docker"
 alias dps="docker ps"
-alias dstop="docker stop $(docker ps -qa --no-trunc --filter 'status=up') && docker stop $(docker ps -qa --no-trunc --filter 'status=running')"
 alias drm="docker stop $(docker ps -qa --no-trunc --filter "status=exited")"
 
 ######################
