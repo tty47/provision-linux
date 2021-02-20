@@ -38,8 +38,6 @@
      - apt-transport-https
      - git
      - pip
-     - python
-     - python3
      - build-essential
      - zlib1g-dev
      - libncurses5-dev
