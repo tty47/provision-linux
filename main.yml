@@ -7,9 +7,13 @@
   tasks:
    - name: Setup
      import_tasks: "./stages/setup.yml"
+     when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
    - name: Vim
      import_tasks: "./stages/vim.yml"
+     when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
    - name: ZSH
      import_tasks: "./stages/zsh.yml"
+     when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
    - name: Tunning
      import_tasks: "./stages/tools_tunning.yml"
+     when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'

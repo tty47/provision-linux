@@ -20,6 +20,14 @@
      - vlc
      - google-chrome-stable
      - terraform
+     - meld
+     - vlc
+     - terminator
+     - tlp # Baterry improvements
+     - tlp-rdw
+
+ - name: Enale tlp
+   command: systemctl enable tlp
 
  - name: Add Chrome repository
    ansible.builtin.apt_repository:
@@ -67,3 +75,6 @@
      - nodejs
      - npm
      - yarn 
+
+ - name: Clean Installation
+   command: apt autoclean clean autoremove -y
