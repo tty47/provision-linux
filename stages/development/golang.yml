@@ -15,7 +15,7 @@
      owner: "root"
      group: "root"
    with_items:
-     - "{{ development.golang.install_dir }}/go{{ development.golang.version }}"
+     - "{{ development.golang.install_dir }}go{{ development.golang.version }}"
      - "{{ development.golang.download_dir }}{{ development.golang.version }}/"
 
  - name: "Download Golang {{ development.golang.version }}"
@@ -27,10 +27,3 @@
    ansible.builtin.unarchive:
      src: "{{ development.golang.download_dir }}{{ development.golang.version }}/go{{ development.golang.version  }}.linux-amd64.tar.gz"
      dest: "{{ development.golang.install_dir }}go{{ development.golang.version }}/"
-
- - name: Refresh Config
-   sudo: no
-   shell: "source /home/{{ global.user }}/.zshrc"
-   args:
-     executable: /bin/bash
-
