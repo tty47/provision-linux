@@ -1,21 +1,24 @@
 ---
+ - name: Import vars file
+   include_vars: "../../vars/main.yml"
+
  - name: Install Golang Dependencies
    apt:
      pkg: [ 'curl', 'gcc', 'git', 'findutils', 'make', 'rsync', 'tar' ]
      state: present
+     update_cache: yes
+
  - name : Create needed paths
    file:
-     path: {{ item }}
+     path: "{{ item }}"
      state: directory
-     owner: {{ global.user }}
-     group: {{ global.user }}
-   with: items:
-     - {{ development.golang.install_dir }}{{ development.golang.version }}/
-     - {{ development.golang.download_dir }}{{ development.golang.version }}/
-
+     owner: "root"
+     group: "root"
+   with_items:
+     - "{{ development.golang.install_dir }}{{ development.golang.version }}/"
+     - "{{ development.golang.download_dir }}{{ development.golang.version }}/"
 
  - name: Download the Go tarball
    get_url:
-     url: "{{ development.golang.mirror }}"
-     dest: "{{ development.golang.donwload_dir }}"
-     #     checksum: "{{ go_tarball_checksum }}"
+     url: "{{ development.golang.mirror }}{{ development.golang.version }}.linux-amd64.tar.gz"
+     dest: "{{ development.golang.download_dir }}{{ development.golang.version }}/"
