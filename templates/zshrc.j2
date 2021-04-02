@@ -112,9 +112,8 @@ alias profile="nano ~/.zshrc"
 alias rprofile="source ~/.zshrc"
 
 # Golang
-#export GOVERSION={{ development.golang.version | default(1.15) }}
-export GOVERSION={{ development.golang.version }}
-export GOROOT=/usr/local/go/go$GOVERSION
+export GOVERSION={{ development.golang.version | default(1.15) }}
+export GOROOT=/usr/local/go/go$GOVERSION/go/
 export GOPATH=~/go
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 
@@ -130,6 +129,7 @@ alias g="git"
 alias gs="git status"
 alias gc="git clone"
 alias gfp="git fetch && git pull"
+alias gourl=" git config --get remote.origin.url"
 
 # Kubernetes
 alias k="kubectl"
