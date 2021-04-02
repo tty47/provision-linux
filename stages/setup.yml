@@ -25,6 +25,8 @@
      - terminator
      - tlp # Baterry improvements
      - tlp-rdw
+     - tmux
+     - ncdu
 
  - name: Enale tlp
    command: systemctl enable tlp
