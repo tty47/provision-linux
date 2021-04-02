@@ -8,17 +8,22 @@
      state: present
      update_cache: yes
 
- - name : Create needed paths
+ - name : Create needed paths for installation
    file:
      path: "{{ item }}"
      state: directory
      owner: "root"
      group: "root"
    with_items:
-     - "{{ development.golang.install_dir }}{{ development.golang.version }}/"
+     - "{{ development.golang.install_dir }}{{ development.golang.version }}/go"
      - "{{ development.golang.download_dir }}{{ development.golang.version }}/"
 
- - name: Download the Go tarball
+ - name: "Download Golang {{ development.golang.version }}"
    get_url:
      url: "{{ development.golang.mirror }}{{ development.golang.version }}.linux-amd64.tar.gz"
      dest: "{{ development.golang.download_dir }}{{ development.golang.version }}/"
+
+ - name: "Extract Golang {{ development.golang.version }}"
+   ansible.builtin.unarchive:
+     src: "{{ development.golang.download_dir }}{{ development.golang.version }}/go{{ development.golang.version  }}.linux-amd64.tar.gz"
+     dest: "{{ development.golang.install_dir }}{{ development.golang.version }}/"
