@@ -22,6 +22,7 @@
    get_url:
      url: "{{ development.golang.mirror }}{{ development.golang.version }}.linux-amd64.tar.gz"
      dest: "{{ development.golang.download_dir }}{{ development.golang.version }}/"
+     force: no
 
  - name: "Extract Golang {{ development.golang.version }}"
    ansible.builtin.unarchive:
