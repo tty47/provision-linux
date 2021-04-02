@@ -1,0 +1,10 @@
+---
+global:
+  user: "joseramon"
+
+development:
+  golang:
+    version: "1.16.3"
+    mirror: "https://golang.org/dl/go1.16.3.linux-amd64.tar.gz"
+    install_dir: "/usr/local/go/"
+    download_dir: "/tmp/golang/123"

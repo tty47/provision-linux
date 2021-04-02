@@ -1,0 +1,21 @@
+---
+ - name: Install Golang Dependencies
+   apt:
+     pkg: [ 'curl', 'gcc', 'git', 'findutils', 'make', 'rsync', 'tar' ]
+     state: present
+ - name : Create needed paths
+   file:
+     path: {{ item }}
+     state: directory
+     owner: {{ global.user }}
+     group: {{ global.user }}
+   with: items:
+     - {{ development.golang.install_dir }}{{ development.golang.version }}/
+     - {{ development.golang.download_dir }}{{ development.golang.version }}/
+
+
+ - name: Download the Go tarball
+   get_url:
+     url: "{{ development.golang.mirror }}"
+     dest: "{{ development.golang.donwload_dir }}"
+     #     checksum: "{{ go_tarball_checksum }}"

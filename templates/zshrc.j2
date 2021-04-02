@@ -112,7 +112,8 @@ alias profile="nano ~/.zshrc"
 alias rprofile="source ~/.zshrc"
 
 # Golang
-export GOVERSION=1.15
+#export GOVERSION={{ development.golang.version | default(1.15) }}
+export GOVERSION={{ development.golang.version }}
 export GOROOT=/usr/local/go/go$GOVERSION
 export GOPATH=~/go
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
