@@ -8,3 +8,5 @@ development:
     mirror: "https://golang.org/dl/go"
     install_dir: "/usr/local/go/"
     download_dir: "/tmp/go"
+  etcd:
+    version: 3.3.13

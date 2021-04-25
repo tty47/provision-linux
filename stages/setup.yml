@@ -76,6 +76,9 @@
  - name: Golang
    include_tasks: development/golang.yml
 
+ - name: ETCD
+   include_tasks: development/etcd.yml
+
  - name: Install FrontEnd Development tools
    apt:
      name: "{{item}}"
