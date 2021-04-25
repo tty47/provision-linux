@@ -5,18 +5,18 @@
 - name: "Download etcd"
   get_url:
    url: "https://github.com/etcd-io/etcd/releases/download/v{{ development.etcd.version }}/etcd-v{{ development.etcd.version }}-linux-amd64.tar.gz"
-   dest: "/tmp/etcd-v${{ development.etcd.version }}-linux-amd64.tar.gz"
+   dest: "/tmp/etcd-v{{ development.etcd.version }}-linux-amd64.tar.gz"
    force: no
 
 - name: Untar files
-  shell: "tar xzvf /tmp/etcd-v${{ development.etcd.version }}-linux-amd64.tar.gz"
+  shell: "tar xzvf /tmp/etcd-v{{ development.etcd.version }}-linux-amd64.tar.gz"
 
 - name: Removed temporal files
-  shell: "rm /tmp/etcd-v${{ development.etcd.version }}-linux-amd64.tar.gz"
+  shell: "rm /tmp/etcd-v{{ development.etcd.version }}-linux-amd64.tar.gz"
 
 - name : Create needed paths for installation
   copy:
-    src: "/tmp/etcd-v${{ development.etcd.version }}-linux-amd64/{{ item }}"
+    src: "/tmp/etcd-v{{ development.etcd.version }}-linux-amd64/{{ item }}"
     dest: /usr/local/bin/
     state: directory
     owner: "root"
