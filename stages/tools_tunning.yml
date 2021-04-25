@@ -2,8 +2,7 @@
  - name: Update Cache
    apt:
      update_cache: yes
-     
- - name: Install terminator
+
    apt:
      name: terminator
      state: present
@@ -20,6 +19,7 @@
    apt:
      name: "{{item}}"
      state: present
+     update_cache: true
    loop:
      - gnome-tweak-tool
      - chrome-gnome-shell
@@ -29,6 +29,9 @@
      - gir1.2-gtop-2.0 
      - gir1.2-nm-1.0 
      - gir1.2-clutter-1.0
+     - mutter
+     - gnome-shell
+     - gnome-session
 
  - name: Copy GTK-3.0 styles
    ansible.builtin.copy:

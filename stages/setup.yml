@@ -13,6 +13,7 @@
      - htop
      - net-tools
      - docker
+     - docker.io
      - docker-compose
      - ansible
      - neofetch
@@ -45,6 +46,8 @@
      state: present
    loop:
      - software-properties-common
+     - ca-certificates
+     - gnupg
      - apt-transport-https
      - git
      - pip
