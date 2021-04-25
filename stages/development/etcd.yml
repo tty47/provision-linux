@@ -2,9 +2,9 @@
 - name: Import vars file
   include_vars: "../../vars/main.yml"
 
-- name: "Download Golang {{ development.golang.version }}"
+- name: "Download etcd"
   get_url:
-   url: "https://github.com/etcd-io/etcd/releases/download/v${RELEASE}/etcd-v${{ development.etcd.version }}-linux-amd64.tar.gz"
+   url: "https://github.com/etcd-io/etcd/releases/download/v${{ development.etcd.version }}etcd-v${{ development.etcd.version }}-linux-amd64.tar.gz"
    dest: "/tmp/etcd-v${{ development.etcd.version }}-linux-amd64.tar.gz"
    force: no
 
