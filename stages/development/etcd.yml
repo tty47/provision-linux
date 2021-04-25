@@ -9,17 +9,16 @@
    force: no
 
 - name: Untar files
-  shell: "tar xzvf /tmp/etcd-v{{ development.etcd.version }}-linux-amd64.tar.gz"
+  shell: "tar xzvf /tmp/etcd-v{{ development.etcd.version }}-linux-amd64.tar.gz -C /tmp/"
 
 - name: Removed temporal files
   shell: "rm /tmp/etcd-v{{ development.etcd.version }}-linux-amd64.tar.gz"
 
-- name : Create needed paths for installation
+- name : Copy etcd and etcdctl
   copy:
     src: "/tmp/etcd-v{{ development.etcd.version }}-linux-amd64/{{ item }}"
     dest: /usr/local/bin/
-    state: directory
-    owner: "root"
+    owner: "{{ global.user }}"
     group: "root"
   with_items:
     - etcd
