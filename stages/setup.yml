@@ -28,6 +28,7 @@
      - tlp-rdw
      - tmux
      - ncdu
+     - vagrant
 
  - name: Enale tlp
    command: systemctl enable tlp
