@@ -1,0 +1,17 @@
+---
+- name: Clean Installation
+  template: 
+    src: ../templates/system/bluetooth.service.j2
+    dest: /lib/systemd/system/bluetooth.service
+    owner: "root"
+    group: "root"
+    mode: '0644'
+
+- name: Reload daemons
+  systemd:
+    daemon_reload: yes
+
+- name: Restart the service bluetooh
+  systemd:
+     name: bluetooth.service 
+     state: restarted
