@@ -73,6 +73,8 @@
      - rar
      - jq
      - code
+     - meld
+     - rofi
 
  - name: Golang
    include_tasks: development/golang.yml

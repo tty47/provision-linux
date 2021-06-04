@@ -32,6 +32,8 @@
      - mutter
      - gnome-shell
      - gnome-session
+     - network-manager-openvpn
+     - network-manager-openvpn-gnome
 
  - name: Copy GTK-3.0 styles
    ansible.builtin.copy:
