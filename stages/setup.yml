@@ -30,6 +30,7 @@
      - ncdu
      - vagrant
      - pulseaudio
+     - hugo
 
  - name: Enale tlp
    command: systemctl enable tlp
