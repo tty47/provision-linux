@@ -29,6 +29,7 @@
      - tmux
      - ncdu
      - vagrant
+     - pulseaudio
 
  - name: Enale tlp
    command: systemctl enable tlp

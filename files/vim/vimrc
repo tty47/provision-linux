@@ -8,17 +8,10 @@ set encoding=utf-8
 set showmatch
 set sw=2
 set relativenumber
-syntax enable
 set tabstop=2
 set autoindent
 set laststatus=2
 set bg=dark
-
-" Show current mode
-set showmode
-
-" Set terminal title to current filename
-set title
 
 " Enable syntax highlighting
 syntax on
@@ -26,9 +19,8 @@ syntax on
 " Always show ruler (current row/column etc.)
 set ruler
 
-" Security: Disable modelines
+" Security Disable modelines
 set modelines=0
-
 
 call plug#begin('~/.vim/plugged')
 
@@ -46,7 +38,6 @@ call plug#end()
 let g:gruvbox_contrast_dark = "hard"
 let NERDTreeQuitOnOpen=1
 let mapleader=" "
-
 
 " ---------------------------------------------------
 " ---------------------------------------------------
@@ -86,9 +77,10 @@ autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
 autocmd FileType go nmap <leader>r  <Plug>(go-run)
 autocmd FileType go nmap <leader>t  <Plug>(go-test)
 
+" ---------------------------------------------------
+" ---------------------------------------------------
 
-" ---------------------------------------------------
-" ---------------------------------------------------
+noremap ww :w<CR>
 
 nmap <Leader>s <Plug>(easymotion-s2)
 nmap <Leader>nt :NERDTreeFind<CR>
