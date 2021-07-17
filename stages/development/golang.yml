@@ -20,6 +20,8 @@
 
  - name: "Register current Golang version"
    shell: go version
+   args:
+     executable: /bin/bash
    register: current_go_version
 
  - name: "Check var"
