@@ -18,6 +18,14 @@
      - "{{ development.golang.install_dir }}go{{ development.golang.version }}"
      - "{{ development.golang.download_dir }}{{ development.golang.version }}/"
 
+ - name: "Register current Golang version"
+   shell: go version
+   register: current_go_version
+
+ - name: "Check var"
+   debug:
+    var: current_go_version
+
  - name: "Download Golang {{ development.golang.version }}"
    get_url:
      url: "{{ development.golang.mirror }}{{ development.golang.version }}.linux-amd64.tar.gz"

@@ -14,4 +14,4 @@
      mode: '0644'
 
  - name: Install plugins inline
-   command: vim +PlugInstall +qall 
+   command: vim +'PlugInstall --sync' +qa

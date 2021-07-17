@@ -63,6 +63,7 @@
      - libreadline-dev
      - libffi-dev
      - libgtk2.0-0:i386
+     - libpangocairo-1.0-0
      - wget
      - curl
      - build-essential
