@@ -41,6 +41,7 @@
     [[[window0]]]
       type = Window
       parent = ""
+      profile = JR
     [[[child1]]]
       type = Terminal
       parent = window0

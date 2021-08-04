@@ -22,6 +22,8 @@
    shell: go version
    args:
      executable: /bin/bash
+   environment:
+     PATH: /usr/local/
    register: current_go_version
 
  - name: "Check var"
