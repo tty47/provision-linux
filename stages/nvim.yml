@@ -1,0 +1,22 @@
+---
+ - name: Add NeoVim repository
+   ansible.builtin.apt_repository:
+    repo: "{{ item }}"
+    state: present
+   loop:
+    - "ppa:neovim-ppa/unstable"
+
+ - name: Setup VIM
+   apt:
+     name: neovim
+     state: present
+     update_cache: yes
+
+       # - name: Copy file configuration
+       #   ansible.builtin.copy:
+       #     src: ../files/vim/vimrc
+       #     dest: "/home/{{ username }}/.vimrc"
+       #     owner: "{{ username }}"
+       #     group: "{{ username }}"
+       #     mode: '0644'
+

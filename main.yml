@@ -16,6 +16,9 @@
    - name: Vim
      import_tasks: "./stages/vim.yml"
      when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+   - name: NeoVim
+     import_tasks: "./stages/nvim.yml"
+     when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
    - name: ZSH
      import_tasks: "./stages/zsh.yml"
      when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
