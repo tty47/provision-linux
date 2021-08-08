@@ -1,6 +1,8 @@
 [global_config]
   dbus = False
   handle_size = 1
+  title_inactive_bg_color = "#93a1a1"
+  always_split_with_profile = True
 [keybindings]
   go_next = <Primary>n
   go_prev = <Primary>b
@@ -17,31 +19,27 @@
   new_window = <Primary><Shift>n
 [profiles]
   [[default]]
-    background_color = "#002b36"
-    background_darkness = 1.0
-    background_type = transparent
-    cursor_color = "#aaaaaa"
-    foreground_color = "#839496"
-    show_titlebar = False
-    scrollback_infinite = True
-    palette = "#204a87:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#555753:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
-  [[JR]]
-    background_darkness = 0.95
+    background_darkness = 0.98
     background_type = transparent
     cursor_color = "#aaaaaa"
     foreground_color = "#ffffff"
     show_titlebar = False
     scrollback_infinite = True
-    palette = "#000000:#aa0000:#00aa00:#aa5500:#0000aa:#aa00aa:#00aaaa:#aaaaaa:#555555:#ff5555:#55ff55:#ffff55:#5555ff:#ff55ff:#55ffff:#ffffff"
+    palette = "#204a87:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#555753:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
+  [[JR]]
+    background_darkness = 0.98
+    background_type = transparent
+    cursor_color = "#aaaaaa"
+    font = FuraCode NF Medium 12
+    foreground_color = "#ffffff"
+    show_titlebar = False
+    scrollback_infinite = True
+    palette = "#282828:#cc241d:#98971a:#d79921:#458588:#b16286:#689d6a:#a89984:#928374:#fb4934:#b8bb26:#fabd2f:#83a598:#d3869b:#8ec07c:#ebdbb2"
 [layouts]
   [[default]]
-#    type = Terminal
-#    parent = window0
-#    profile = JR
     [[[window0]]]
       type = Window
       parent = ""
-      profile = JR
     [[[child1]]]
       type = Terminal
       parent = window0
