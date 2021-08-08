@@ -33,10 +33,10 @@
      url: "{{ development.golang.mirror }}{{ development.golang.version }}.linux-amd64.tar.gz"
      dest: "{{ development.golang.download_dir }}{{ development.golang.version }}/"
      force: no
-   when: current_go_version_exists == false 
+   when: current_go_version_exists.stat.exists == false 
 
  - name: "Extract Golang {{ development.golang.version }}"
    ansible.builtin.unarchive:
      src: "{{ development.golang.download_dir }}{{ development.golang.version }}/go{{ development.golang.version  }}.linux-amd64.tar.gz"
      dest: "{{ development.golang.install_dir }}go{{ development.golang.version }}/"
-   when: current_go_version_exists == false 
+   when: current_go_version_exists.stat.exists == false 
