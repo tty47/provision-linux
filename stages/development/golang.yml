@@ -19,24 +19,24 @@
      - "{{ development.golang.download_dir }}{{ development.golang.version }}/"
 
  - name: "Register current Golang version"
-   shell: go version
-   args:
-     executable: /bin/bash
-   environment:
-     PATH: /usr/local/
-   register: current_go_version
+   stat:
+     path: "a_{{ development.golang.install_dir }}go{{ development.golang.version }}/go/bin/go"
+   register: current_go_version_exists
+   become: no
 
  - name: "Check var"
    debug:
-    var: current_go_version
+    var: current_go_version_exists
 
  - name: "Download Golang {{ development.golang.version }}"
    get_url:
      url: "{{ development.golang.mirror }}{{ development.golang.version }}.linux-amd64.tar.gz"
      dest: "{{ development.golang.download_dir }}{{ development.golang.version }}/"
      force: no
+   when: current_go_version_exists == false 
 
  - name: "Extract Golang {{ development.golang.version }}"
    ansible.builtin.unarchive:
      src: "{{ development.golang.download_dir }}{{ development.golang.version }}/go{{ development.golang.version  }}.linux-amd64.tar.gz"
      dest: "{{ development.golang.install_dir }}go{{ development.golang.version }}/"
+   when: current_go_version_exists == false 
