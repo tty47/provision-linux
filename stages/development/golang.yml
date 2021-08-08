@@ -20,7 +20,7 @@
 
  - name: "Register current Golang version"
    stat:
-     path: "a_{{ development.golang.install_dir }}go{{ development.golang.version }}/go/bin/go"
+     path: "{{ development.golang.install_dir }}go{{ development.golang.version }}/go/bin/go"
    register: current_go_version_exists
    become: no
 
