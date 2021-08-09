@@ -1,8 +1,4 @@
 ---
- - name: Update Cache
-   apt:
-     update_cache: yes
-
  - name: Install Applications
    apt:
      name: "{{item}}"
@@ -79,6 +75,7 @@
      - code
      - meld
      - rofi
+     - xclip
 
  - name: Golang
    include_tasks: development/golang.yml
