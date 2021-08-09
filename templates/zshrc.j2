@@ -77,7 +77,11 @@ plugins=(
 git
 colored-man-pages
 history
+rbenv
 zsh-autosuggestions
+bundler
+dotenv
+rake
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -124,24 +128,31 @@ alias open="nautilus . &"
 alias m="make"
 alias t="tmux"
 alias vim="nvim"
+alias copy='xclip -sel clip'
 
-#Git
+# Git
 alias g="git"
 alias gs="git status"
 alias gc="git clone"
 alias gfp="git fetch && git pull"
-alias gurl="git config --get remote.origin.url"
-alias gourl="firefox git config --get remote.origin.url"
+alias gch='git checkout'
+alias gurl='git config --get remote.origin.url'
+alias gourl='URL=`git config --get remote.origin.url` && google-chrome $URL'
 
 # Kubernetes
-alias k="kubectl"
-alias kd="kubectl describe"
-alias kgn="kubectl get ns"
-alias kgp="kubectl get pods"
-alias kl="kubectl logs -f"
+alias k='kubectl'
+alias kd='kubectl describe'
+alias kdp='kubectl describe pod'
+alias kg='kubectl get'
+alias kgno='kubectl get no'
+alias kgn='kubectl get ns'
+alias kdelp='kubectl delete pod'
+alias kga='kubectl get all'
+alias kl='kubectl logs -f'
+alias kgall='k get deploy,sts,job,ds,rs,po,pvc,rc,svc,cm,secrets'
 
 # Docker
-alias dkall="docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)"
+alias dkall='docker rm $(docker ps -a -q) && docker rmi $(docker images -a -q) && docker rm $(docker ps -a -f status=exited -q) && docker system prune -a'
 alias d="docker"
 alias dps="docker ps"
 alias drm="docker stop $(docker ps -qa --no-trunc --filter "status=exited")"
