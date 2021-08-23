@@ -12,11 +12,18 @@
      state: present
      update_cache: yes
 
-       # - name: Copy file configuration
-       #   ansible.builtin.copy:
-       #     src: ../files/vim/vimrc
-       #     dest: "/home/{{ username }}/.vimrc"
-       #     owner: "{{ username }}"
-       #     group: "{{ username }}"
-       #     mode: '0644'
+ - name: Create paths needed for VIM
+   file:
+     path: "/home/{{ username }}/.config/nvim"
+     state: directory
+     owner: "{{ username }}"
+     group: "{{ username }}"
+
+ - name: Copy file configuration
+   ansible.builtin.copy:
+     src: ../files/vim/vimrc
+     dest: "/home/{{ username }}/.vimrc"
+     owner: "{{ username }}"
+     group: "{{ username }}"
+     mode: '0644'
 
