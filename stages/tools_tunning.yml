@@ -34,6 +34,7 @@
      - gnome-session
      - network-manager-openvpn
      - network-manager-openvpn-gnome
+     - fonts-firacode
 
  - name: Copy GTK-3.0 styles
    ansible.builtin.copy:
