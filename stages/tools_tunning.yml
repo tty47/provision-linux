@@ -23,11 +23,11 @@
    loop:
      - gnome-tweak-tool
      - chrome-gnome-shell
-     - gnome-weather 
+     - gnome-weather
      - gnome-clocks
      - pavucontrol
-     - gir1.2-gtop-2.0 
-     - gir1.2-nm-1.0 
+     - gir1.2-gtop-2.0
+     - gir1.2-nm-1.0
      - gir1.2-clutter-1.0
      - mutter
      - gnome-shell
@@ -35,6 +35,11 @@
      - network-manager-openvpn
      - network-manager-openvpn-gnome
      - fonts-firacode
+     - i3
+     - i3lock
+     - i3status
+     - dmenu
+     - lightdm
 
  - name: Copy GTK-3.0 styles
    ansible.builtin.copy:
