@@ -76,7 +76,7 @@ Plug 'puremourning/vimspector'
 Plug 'szw/vim-maximizer'
 
 " THANKS BFREDL
-Plug '/home/mpaulson/personal/contextprint.nvim'
+" Plug '/home/mpaulson/personal/contextprint.nvim'
 
 Plug 'rust-lang/rust.vim'
 Plug 'darrikonn/vim-gofmt'
@@ -98,7 +98,6 @@ Plug 'ThePrimeagen/git-worktree.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
-
 Plug 'flazz/vim-colorschemes'
 Plug 'chriskempson/base16-vim'
 
@@ -113,7 +112,7 @@ Plug 'ryanoasis/vim-devicons'
 "
 
 " HARPOON!!
-Plug '/home/mpaulson/personal/rfc-reader'
+" Plug '/home/mpaulson/personal/rfc-reader'
 Plug 'mhinz/vim-rfc'
 
 " prettier
@@ -165,15 +164,15 @@ colorscheme PaperColor
 
 
 " Adding local modules
-let &runtimepath.=',/home/joseramon/personal/harpoon/master'
-let &runtimepath.=',/home/joseramon/personal/vim-with-me/ui'
-let &runtimepath.=',/home/joseramon/personal/git-worktree.nvim/master'
-let &runtimepath.=',/home/joseramon/personal/refactoring.nvim'
+" let &runtimepath.=',/home/joseramon/personal/harpoon/master'
+" let &runtimepath.=',/home/joseramon/personal/vim-with-me/ui'
+" let &runtimepath.=',/home/joseramon/personal/git-worktree.nvim/master'
+" let &runtimepath.=',/home/joseramon/personal/refactoring.nvim'
 
 " let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'CodeLLDB' ]
 
-lua require("theprimeagen")
-lua require'nvim-treesitter.configs'.setup { highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true }}
+" lua require("theprimeagen")
+" lua require'nvim-treesitter.configs'.setup { highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true }}
 let g:vim_be_good_log_file = 1
 let g:vim_apm_log = 1
 

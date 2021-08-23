@@ -2,9 +2,6 @@
 - hosts: localhost
   become: true
   gather_facts: yes
-  #  vars:
-  #  #username: "joseramon"
-
   tasks:
    - name: Import vars file
      include_vars: "vars/main.yml"
