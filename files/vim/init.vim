@@ -16,7 +16,7 @@ set vb
 set ruler
 set spelllang=en_us
 set autoindent
-set colorcolumn=80
+set colorcolumn=90
 set mouse=a
 set clipboard=unnamed
 set noscrollbind
@@ -24,14 +24,6 @@ set wildmenu
 set autochdir
 
 hi Search cterm=NONE ctermfg=black ctermbg=red
-
-" No more Arrow Keys, deal with it
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
-
-" netrw
 
 nnoremap - :Explore<CR>
 let g:netrw_banner = 0
@@ -76,10 +68,6 @@ Plug 'puremourning/vimspector'
 Plug 'szw/vim-maximizer'
 
 " THANKS BFREDL
-" Plug '/home/mpaulson/personal/contextprint.nvim'
-
-Plug 'rust-lang/rust.vim'
-Plug 'darrikonn/vim-gofmt'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
 Plug 'vim-utils/vim-man'
@@ -89,14 +77,17 @@ Plug 'theprimeagen/vim-be-good'
 Plug 'gruvbox-community/gruvbox'
 Plug 'tpope/vim-projectionist'
 
+
+" Set color scheme to gruvbox
 " telescope requirements...
 Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-lua/plenary.nvim' " Installation recommended
+Plug 'nvim-telescope/telescope.nvim' " Installation recommended
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'ThePrimeagen/git-worktree.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+
 
 Plug 'flazz/vim-colorschemes'
 Plug 'chriskempson/base16-vim'
@@ -109,10 +100,8 @@ Plug 'ryanoasis/vim-devicons'
  Plug 'terryma/vim-multiple-cursors'
 " Plug 'junegunn/fzf'
 " Plug 'junegunn/fzf.vim'
-"
 
 " HARPOON!!
-" Plug '/home/mpaulson/personal/rfc-reader'
 Plug 'mhinz/vim-rfc'
 
 " prettier
@@ -132,9 +121,10 @@ Plug 'airblade/vim-gitgutter'  " https://github.com/airblade/vim-gitgutter
 Plug 'mkitt/tabline.vim'       " https://github.com/mkitt/tabline.vim
 
 "> Go
-Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' } " https://github.com/fatih/vim-go
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}     " https://github.com/neoclide/coc.nvim
 Plug 'SirVer/ultisnips'                             " https://github.com/sirver/UltiSnips
+"Plug 'sheerun/vim-polyglot'
 
 "> Theme
 Plug 'NLKNguyen/papercolor-theme' " https://github.com/NLKNguyen/papercolor-theme
@@ -157,22 +147,19 @@ set updatetime=500
 " papercolor-theme
 
 set termguicolors
-set background=dark
-colorscheme PaperColor
+" set background=dark
+" colorscheme PaperColor
+
+" Set color scheme to gruvbox
+colorscheme gruvbox
+highlight Normal guibg=none
 
 "-- papercolor-theme END
 
-
-" Adding local modules
-" let &runtimepath.=',/home/joseramon/personal/harpoon/master'
-" let &runtimepath.=',/home/joseramon/personal/vim-with-me/ui'
-" let &runtimepath.=',/home/joseramon/personal/git-worktree.nvim/master'
-" let &runtimepath.=',/home/joseramon/personal/refactoring.nvim'
-
 " let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'CodeLLDB' ]
 
-" lua require("theprimeagen")
-" lua require'nvim-treesitter.configs'.setup { highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true }}
+lua require("theprimeagen")
+lua require'nvim-treesitter.configs'.setup { highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true }}
 let g:vim_be_good_log_file = 1
 let g:vim_apm_log = 1
 
