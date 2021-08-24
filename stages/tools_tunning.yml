@@ -40,6 +40,10 @@
      - i3status
      - dmenu
      - lightdm
+     - xbacklight
+     - feh
+     - conky
+     - synclient
 
  - name: Copy GTK-3.0 styles
    ansible.builtin.copy:
