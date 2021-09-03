@@ -150,6 +150,7 @@ alias kdelp='kubectl delete pod'
 alias kga='kubectl get all'
 alias kl='kubectl logs -f'
 alias kgall='k get deploy,sts,job,ds,rs,po,pvc,rc,svc,cm,secrets'
+alias kgqns='for i in $(kubectl get ns | cut -d" " -f1 | tail +2 );do echo -e "\e[94mNS:\e[24m \e[32m$i\e[39m" && k describe quota -n $i; done'
 
 # Docker
 alias dkall='docker rm $(docker ps -a -q) && docker rmi $(docker images -a -q) && docker rm $(docker ps -a -f status=exited -q) && docker system prune -a'
