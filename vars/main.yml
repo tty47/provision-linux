@@ -4,7 +4,7 @@ global:
 
 development:
   golang:
-    version: &golang_version "1.16.7"
+    version: &golang_version "1.17"
     mirror: "https://golang.org/dl/go"
     install_dir: "/usr/local/go/"
     download_dir: "/tmp/go"
