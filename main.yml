@@ -11,6 +11,9 @@
    - name: System Configuration
      import_tasks: "./stages/system_configuration.yml"
      when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+   - name: GCP tools
+     import_tasks: "./stages/gcp.yml"
+     when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
    - name: Vim
      import_tasks: "./stages/vim.yml"
      when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'

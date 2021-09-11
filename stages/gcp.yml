@@ -1,0 +1,27 @@
+---
+ - name: Add the Cloud SDK distribution URI as a package source
+   copy:
+     src: "../files/gcp/google-cloud-sdk.list"
+     dest: "/etc/apt/sources.list.d/google-cloud-sdk.list"
+     owner: "{{ username }}"
+     group: "{{ username }}"
+     mode: '0644'
+
+ - name: Import GCP keys
+   shell: curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
+
+ - name: Add needed packages
+   apt:
+     name: "{{ item }}"
+     state: present
+     update_cache: yes
+   loop:
+     - apt-transport-https
+     - ca-certificates
+     - gnupg
+
+ - name: Update and Install
+   apt:
+     name: google-cloud-sdk
+     state: present
+     update_cache: yes
