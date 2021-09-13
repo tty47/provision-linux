@@ -43,6 +43,16 @@
      - xbacklight
      - feh
      - conky
+     - rofi
+     - feh
+     - lxappearance
+     - compton
+     - numlockx
+     - pulseaudio-utils
+     - pavucontrol
+     - papirus-icon-theme
+     - blueman
+     - pulseaudio-module-bluetooth
 
  - name: Copy GTK-3.0 styles
    ansible.builtin.copy:
