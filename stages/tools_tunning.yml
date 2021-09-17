@@ -25,6 +25,7 @@
      - chrome-gnome-shell
      - gnome-weather
      - gnome-clocks
+     - gnome-flashback
      - pavucontrol
      - gir1.2-gtop-2.0
      - gir1.2-nm-1.0
