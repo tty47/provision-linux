@@ -12,4 +12,3 @@ setup:
 
 setup_debug:
 	sudo ansible-playbook main.yml --extra-vars "username=$(USER) -vvv"
-	

@@ -61,3 +61,14 @@
      owner: "{{ username }}"
      group: "{{ username }}"
      mode: '0644'
+
+ - name: Copy i3 configuration
+   ansible.builtin.copy:
+     src: "../files/i3/{{ item }}"
+     dest: "/home/{{ username }}/.config/i3/{{ item }}"
+     owner: "{{ username }}"
+     group: "{{ username }}"
+     mode: '0644'
+   with_items:
+     - config
+     - i3blocks.conf
