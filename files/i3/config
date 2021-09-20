@@ -69,34 +69,28 @@ exec --no-startup-id synclient HorizEdgeScroll=1 VertEdgeScroll=1 VertScrollDelt
 #set $refresh_i3status killall -SIGUSR1 i3status
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
-
-#bindsym XF86AudioRaiseVolume exec "amixer -q sset Master,0 1+ unmute"
-#bindsym XF86AudioLowerVolume exec "amixer -q sset Master,0 1- unmute"
-#bindsym XF86AudioMute exec "amixer -q sset Master,0 toggle"
-
-#bindsym $mod+F12 exec amixer set Master 5%+
-#bindsym $mod+F11 exec amixer set Master 5%-
+bindsym XF86AudioRaiseVolume exec "amixer -q sset Master,0 1+ unmute"
+bindsym XF86AudioLowerVolume exec "amixer -q sset Master,0 1- unmute"
+bindsym XF86AudioMute exec "amixer -q sset Master,0 toggle"
 
 # Sreen brightness controls
 #bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
 #bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 
-bindsym XF86MonBrightnessUp exec xrandr --output eDP-1-1 --brightness 1.4
-bindsym XF86MonBrightnessDown exec xrandr --output eDP-1-1 --brightness 1
-
 # Bright
-#bindsym XF86MonBrightnessDown exec brightnessctl set 2%-
-#bindsym XF86MonBrightnessUp exec brightnessctl set +2%
+bindsym XF86MonBrightnessUp exec xrandr --output eDP-1-1 --brightness 1.2
+bindsym XF86MonBrightnessDown exec xrandr --output eDP-1-1 --brightness 0.9
+
+#bindsym XF86MonBrightnessUp exec xrandr --output eDP-1-1 --brightness +2%
+#bindsym XF86MonBrightnessDown exec xrandr --output eDP-1-1 --brightness +2%
+
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # start a terminal
-#bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec terminator
+bindsym $mod+Return exec i3-sensible-terminal
+#bindsym $mod+Return exec terminator
 
 # kill focused window
 bindsym $mod+Shift+q kill
