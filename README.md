@@ -1,16 +1,25 @@
 # Provision Linux - Ubuntu with Ansible
 
+## Description
 In order to provision your linux, execute the following command:
 
 ```Makefile
 make all
 ```
 
-Execute only the playbook
+---
+
+## Execute only the playbook
 ```ansible-playbook
 sudo ansible-playbook main.yml --extra-vars "username=<username>"
 ```
 
+---
+
+## Installation
+```bash
+https://raw.githubusercontent.com/jrmanes/provision-linux/master/start.sh
+```
 
 ---
 Jose Ramón Mañes
