@@ -41,7 +41,7 @@ exec --no-startup-id nm-applet
 exec synclient VertScroll=-79 synclient HorizScroll=-79
 
 # Set wallpaper
-exec_always feh --bg-scale /home/joseramon/Pictures/Wallpapers/pictures/IMG_2479.jpg/IMG_2479.jpg
+exec_always feh --bg-scale /home/joseramon/Pictures/Wallpapers/pictures/IMG_2479.jpg
 
 # Force Unity daemon
 exec_always unity-settings-daemon
