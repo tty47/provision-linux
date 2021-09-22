@@ -18,7 +18,7 @@ sudo ansible-playbook main.yml --extra-vars "username=<username>"
 
 ## Installation
 ```bash
-https://raw.githubusercontent.com/jrmanes/provision-linux/master/start.sh
+bash <(curl -s https://raw.githubusercontent.com/jrmanes/provision-linux/master/start.sh)
 ```
 
 ---
