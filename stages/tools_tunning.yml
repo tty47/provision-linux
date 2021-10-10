@@ -54,6 +54,7 @@
      - papirus-icon-theme
      - blueman
      - pulseaudio-module-bluetooth
+     - fzf
 
  - name: Copy GTK-3.0 styles
    ansible.builtin.copy:
