@@ -78,6 +78,9 @@
      - rofi
      - xclip
      - apache2-utils
+     - libtepl-5-0
+     - libgtk-3-devç
+     - libwebkit2gtk-4.0-dev
 
  - name: Golang
    include_tasks: development/golang.yml

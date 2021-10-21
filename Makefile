@@ -1,8 +1,13 @@
 # Setup computer
+.PHONY: user clear all install_ansible setup setup_debug
+
 user:
 	echo $(USER)
 
-all: install_ansible setup
+clear:
+	clear
+
+all: clear install_ansible setup
 
 install_ansible:
 	sudo apt install -y ansible
