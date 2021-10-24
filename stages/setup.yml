@@ -15,7 +15,7 @@
      - ansible
      - neofetch
      - vlc
-     - google-chrome-stable
+       #     - google-chrome-stable
      - meld
      - vlc
      - terminator
