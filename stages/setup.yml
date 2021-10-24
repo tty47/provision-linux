@@ -14,7 +14,6 @@
      - docker-compose
      - ansible
      - neofetch
-     - kubectl
      - vlc
      - google-chrome-stable
      - meld
