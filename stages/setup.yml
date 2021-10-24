@@ -17,7 +17,6 @@
      - kubectl
      - vlc
      - google-chrome-stable
-     - terraform
      - meld
      - vlc
      - terminator
