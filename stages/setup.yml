@@ -87,6 +87,9 @@
  - name: ETCD
    include_tasks: development/etcd.yml
 
+ - name: Kubectl
+   include_tasks: development/kubectl.yml
+
  - name: Install FrontEnd Development tools
    apt:
      name: "{{item}}"

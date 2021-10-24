@@ -1,0 +1,12 @@
+---
+- name: Import vars file
+  include_vars: "../../vars/main.yml"
+
+- name: "Download kubectl"
+  shell:
+    curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+
+- name: "Move to the proper path"
+  shell:
+   sudo install -o root -g root -m 0755 kubectl /usr/bin/kubectl
+
