@@ -32,9 +32,10 @@
    command: systemctl enable tlp
 
  - name: Add Chrome repository
-   ansible.builtin.apt_repository:
+   apt_repository:
     repo: "{{ item }}"
     state: present
+    update_cache: true
    loop:
     - "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main"
     - "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main"
@@ -43,7 +44,7 @@
    apt:
      name: "{{item}}"
      state: present
-     update_cache: yes
+     update_cache: true
    loop:
      - software-properties-common
      - ca-certificates
