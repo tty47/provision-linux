@@ -98,8 +98,8 @@ Plug 'ryanoasis/vim-devicons'
 " Tunning
  Plug 'itchyny/lightline.vim'
  Plug 'terryma/vim-multiple-cursors'
-" Plug 'junegunn/fzf'
-" Plug 'junegunn/fzf.vim'
+ Plug 'junegunn/fzf'
+ Plug 'junegunn/fzf.vim'
 
 " HARPOON!!
 Plug 'mhinz/vim-rfc'
@@ -122,7 +122,7 @@ Plug 'mkitt/tabline.vim'       " https://github.com/mkitt/tabline.vim
 
 "> Go
 " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'neoclide/coc.nvim', {'branch': 'release'}     " https://github.com/neoclide/coc.nvim
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}     " https://github.com/neoclide/coc.nvim
 Plug 'SirVer/ultisnips'                             " https://github.com/sirver/UltiSnips
 "Plug 'sheerun/vim-polyglot'
 
@@ -158,7 +158,7 @@ highlight Normal guibg=none
 
 " let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'CodeLLDB' ]
 
-lua require("theprimeagen")
+" lua require("theprimeagen")
 lua require'nvim-treesitter.configs'.setup { highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true }}
 let g:vim_be_good_log_file = 1
 let g:vim_apm_log = 1
