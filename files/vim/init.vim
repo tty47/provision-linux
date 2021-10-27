@@ -56,6 +56,7 @@ Plug 'hrsh7th/nvim-compe'
 " Plug 'nvim-lua/completion-nvim'
 Plug 'glepnir/lspsaga.nvim'
 Plug 'simrat39/symbols-outline.nvim'
+
 " Plug 'tjdevries/nlua.nvim'
 " Plug 'tjdevries/lsp_extensions.nvim'
 
@@ -77,7 +78,6 @@ Plug 'theprimeagen/vim-be-good'
 Plug 'gruvbox-community/gruvbox'
 Plug 'tpope/vim-projectionist'
 
-
 " Set color scheme to gruvbox
 " telescope requirements...
 Plug 'nvim-lua/popup.nvim'
@@ -87,7 +87,6 @@ Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'ThePrimeagen/git-worktree.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-
 
 Plug 'flazz/vim-colorschemes'
 Plug 'chriskempson/base16-vim'
@@ -108,9 +107,8 @@ Plug 'mhinz/vim-rfc'
 Plug 'sbdchd/neoformat'
 
 " should I try another status bar???
-"  Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
+" Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
 " Plug 'hoob3rt/lualine.nvim'
-
 
 "> Must Have
 Plug 'vim-airline/vim-airline' " https://github.com/vim-airline/vim-airline
@@ -121,7 +119,7 @@ Plug 'airblade/vim-gitgutter'  " https://github.com/airblade/vim-gitgutter
 Plug 'mkitt/tabline.vim'       " https://github.com/mkitt/tabline.vim
 
 "> Go
-" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}     " https://github.com/neoclide/coc.nvim
 Plug 'SirVer/ultisnips'                             " https://github.com/sirver/UltiSnips
 "Plug 'sheerun/vim-polyglot'
@@ -130,8 +128,6 @@ Plug 'SirVer/ultisnips'                             " https://github.com/sirver/
 Plug 'NLKNguyen/papercolor-theme' " https://github.com/NLKNguyen/papercolor-theme
 
 call plug#end()
-
-
 "-- plug END
 
 " ctrlp
@@ -158,7 +154,6 @@ highlight Normal guibg=none
 
 " let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'CodeLLDB' ]
 
-" lua require("theprimeagen")
 lua require'nvim-treesitter.configs'.setup { highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true }}
 let g:vim_be_good_log_file = 1
 let g:vim_apm_log = 1

@@ -27,6 +27,7 @@
      - pulseaudio
      - hugo
      - ifuse
+     - nmap
 
  - name: Enale tlp
    command: systemctl enable tlp
@@ -78,6 +79,7 @@
      - libtepl-5-0
      - libgtk-3-dev
      - libwebkit2gtk-4.0-dev
+     - lua5.3
 
  - name: Golang
    include_tasks: development/golang.yml
