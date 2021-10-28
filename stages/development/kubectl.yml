@@ -16,7 +16,7 @@
     - kubectl
     - development
 
-- name: Recursively remove directory
+- name: Delete kubectl from working path
   file:
     path: kubectl
     state: absent
