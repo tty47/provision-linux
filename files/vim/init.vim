@@ -83,7 +83,8 @@ Plug 'tpope/vim-projectionist'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim' " Installation recommended
 Plug 'nvim-telescope/telescope.nvim' " Installation recommended
-Plug 'nvim-telescope/telescope-fzy-native.nvim'
+" Plug 'nvim-telescope/telescope-fzy-native.nvim'
+" Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'ThePrimeagen/git-worktree.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
@@ -227,8 +228,8 @@ augroup highlight_yank
     autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 40})
 augroup END
 
-augroup THE_PRIMEAGEN
-    autocmd!
-    autocmd BufWritePre * %s/\s\+$//e
-    autocmd BufEnter,BufWinEnter,TabEnter *.rs :lua require'lsp_extensions'.inlay_hints{}
-augroup END
+" augroup THE_PRIMEAGEN
+"    autocmd!
+"    autocmd BufWritePre * %s/\s\+$//e
+"    autocmd BufEnter,BufWinEnter,TabEnter *.rs :lua require'lsp_extensions'.inlay_hints{}
+" augroup END

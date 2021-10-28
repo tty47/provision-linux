@@ -4,14 +4,50 @@
      name: vim
      state: present
      update_cache: yes
+   tags:
+     - vim
+     - tunning
+     - development
 
  - name: Copy file configuration
-   ansible.builtin.copy:
+   copy:
      src: ../files/vim/vimrc
      dest: "/home/{{ username }}/.vimrc"
      owner: "{{ username }}"
      group: "{{ username }}"
      mode: '0644'
+   tags:
+     - vim
+     - tunning
+     - development
 
+ - name: Copy all file configuration
+   copy:
+     src: ../files/vim/
+     dest: "/home/{{ username }}/.config/nvim/"
+     owner: "{{ username }}"
+     group: "{{ username }}"
+     mode: '0644'
+   tags:
+     - vim
+     - tunning
+     - development
+
+ - name: Install PlugInstall plugin
+   become: yes
+   become_user: "{{ username }}"
+   shell: curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs 
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+   tags:
+     - vim
+     - tunning
+     - development
+     
  - name: Install plugins inline
-   command: vim +'PlugInstall --sync' +qa
+   become: yes
+   become_user: "{{ username }}"
+   command: nvim +'PlugInstall --sync' +qa --headless
+   tags:
+     - vim
+     - tunning
+     - development
