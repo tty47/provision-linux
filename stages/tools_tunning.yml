@@ -1,20 +1,4 @@
 ---
- - name: Update Cache
-   apt:
-     update_cache: yes
-
-   apt:
-     name: terminator
-     state: present
-
- - name: Copy terminator configuration
-   ansible.builtin.copy:
-     src: ../files/terminator/config
-     dest: "/home/{{ username }}/.config/terminator/config"
-     owner: "{{ username }}"
-     group: "{{ username }}"
-     mode: '0644'
-
  - name: Setup Tunning
    apt:
      name: "{{item}}"
@@ -35,6 +19,7 @@
      - gnome-session
      - network-manager-openvpn
      - network-manager-openvpn-gnome
+     - terminator
      - fonts-firacode
      - i3
      - i3lock
@@ -56,8 +41,15 @@
      - pulseaudio-module-bluetooth
      - fzf
 
+ - name: Copy terminator configuration
+   copy:
+     src: ../files/terminator/config
+     dest: "/home/{{ username }}/.config/terminator/config"
+     owner: "{{ username }}"
+     group: "{{ username }}"
+     mode: '0644'
  - name: Copy GTK-3.0 styles
-   ansible.builtin.copy:
+   copy:
      src: ../files/gkt-3.0/gtk.css
      dest: "/home/{{ username }}/.config/gtk-3.0/gkt.css"
      owner: "{{ username }}"
@@ -65,7 +57,7 @@
      mode: '0644'
 
  - name: Copy i3 configuration
-   ansible.builtin.copy:
+   copy:
      src: "../files/i3/{{ item }}"
      dest: "/home/{{ username }}/.config/i3/{{ item }}"
      owner: "{{ username }}"
@@ -74,3 +66,38 @@
    with_items:
      - config
      - i3blocks.conf
+
+ - name : Create needed paths for Tmux installation
+   file:
+     path: "{{ item }}"
+     state: directory
+     owner: "{{ username }}"
+     group: "{{ username }}"
+   with_items:
+     - "/home/{{ username }}/.tmux/plugins/"
+   tags:
+    - tmux
+    - tunning
+    - development
+
+ - name: Copy Tmux configuration
+   copy:
+     src: "../files/tmux/{{ item }}"
+     dest: "/home/{{ username }}/.{{ item }}"
+     owner: "{{ username }}"
+     group: "{{ username }}"
+     mode: '0644'
+   with_items:
+     - tmux.conf
+   tags:
+     - tmux
+     - tunning
+     - development
+
+ - name: Download Tmux Plugin Manager
+   shell: |
+     git clone https://github.com/tmux-plugins/tpm.git /home/{{ username }}/.tmux/plugins/tpm
+   tags:
+    - tmux
+    - tunning
+    - development

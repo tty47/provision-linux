@@ -28,6 +28,7 @@
      - hugo
      - ifuse
      - nmap
+     - ntfs-3g
 
  - name: Enale tlp
    command: systemctl enable tlp

@@ -7,12 +7,21 @@
    url: "https://github.com/etcd-io/etcd/releases/download/v{{ development.etcd.version }}/etcd-v{{ development.etcd.version }}-linux-amd64.tar.gz"
    dest: "/tmp/etcd-v{{ development.etcd.version }}-linux-amd64.tar.gz"
    force: no
+  tags:
+    - etcd
+    - development
 
 - name: Untar files
   shell: "tar xzvf /tmp/etcd-v{{ development.etcd.version }}-linux-amd64.tar.gz -C /tmp/"
+  tags:
+    - etcd
+    - development
 
 - name: Removed temporal files
   shell: "rm /tmp/etcd-v{{ development.etcd.version }}-linux-amd64.tar.gz"
+  tags:
+    - etcd
+    - development
 
 - name : Copy etcd and etcdctl
   copy:
@@ -23,3 +32,6 @@
   with_items:
     - etcd
     - etcdctl
+  tags:
+    - etcd
+    - development

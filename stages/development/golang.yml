@@ -7,6 +7,10 @@
      pkg: [ 'curl', 'gcc', 'git', 'findutils', 'make', 'rsync', 'tar' ]
      state: present
      update_cache: yes
+   tags:
+     - golang
+     - go
+     - development
 
  - name : Create needed paths for installation
    file:
@@ -17,26 +21,46 @@
    with_items:
      - "{{ development.golang.install_dir }}go{{ development.golang.version }}"
      - "{{ development.golang.download_dir }}{{ development.golang.version }}/"
+   tags:
+     - golang
+     - go
+     - development
 
  - name: "Register current Golang version"
    stat:
      path: "{{ development.golang.install_dir }}go{{ development.golang.version }}/go/bin/go"
    register: current_go_version_exists
    become: no
+   tags:
+     - golang
+     - go
+     - development
 
  - name: "Check var"
    debug:
     var: current_go_version_exists
+   tags:
+     - golang
+     - go
+     - development
 
  - name: "Download Golang {{ development.golang.version }}"
    get_url:
      url: "{{ development.golang.mirror }}{{ development.golang.version }}.linux-amd64.tar.gz"
      dest: "{{ development.golang.download_dir }}{{ development.golang.version }}/"
      force: no
-   when: current_go_version_exists.stat.exists == false 
+   when: current_go_version_exists.stat.exists == false
+   tags:
+     - golang
+     - go
+     - development
 
  - name: "Extract Golang {{ development.golang.version }}"
    ansible.builtin.unarchive:
      src: "{{ development.golang.download_dir }}{{ development.golang.version }}/go{{ development.golang.version  }}.linux-amd64.tar.gz"
      dest: "{{ development.golang.install_dir }}go{{ development.golang.version }}/"
-   when: current_go_version_exists.stat.exists == false 
+   when: current_go_version_exists.stat.exists == false
+   tags:
+     - golang
+     - go
+     - development
