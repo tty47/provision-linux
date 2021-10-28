@@ -97,6 +97,9 @@
  - name: Download Tmux Plugin Manager
    shell: |
      git clone https://github.com/tmux-plugins/tpm.git /home/{{ username }}/.tmux/plugins/tpm
+     sudo chown -R {{ username }}:{{ username }} /home/{{ username }}/.tmux/plugins/
+     sudo -H -u {{ username }} bash -c 'tmux source ~/.tmux.conf'
+     sudo -H -u {{ username }} bash -c '~/.tmux/plugins/tpm/bin/install_plugins'
    tags:
     - tmux
     - tunning
