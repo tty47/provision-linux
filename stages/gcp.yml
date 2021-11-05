@@ -22,6 +22,9 @@
 
  - name: Update and Install
    apt:
-     name: google-cloud-sdk
+     name: "{{ item }}" 
      state: present
      update_cache: yes
+   loop:
+     -  google-cloud-sdk
+     -  google-cloud-sdk-cloud-build-local

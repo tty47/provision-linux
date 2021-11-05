@@ -108,8 +108,7 @@
      name: "{{item}}"
      state: present
    loop:
-     - nodejs
-     - npm
+     - nodejs 
      - yarn
 
  - name: Clean Installation
