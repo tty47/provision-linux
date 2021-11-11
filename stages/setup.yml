@@ -41,6 +41,7 @@
      - libcurl4-openssl-dev 
      - software-properties-common 
      - libffi-dev 
+     - magic-wormhole 
 
  - name: Enale tlp
    command: systemctl enable tlp
