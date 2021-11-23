@@ -121,7 +121,7 @@ Plug 'mkitt/tabline.vim'       " https://github.com/mkitt/tabline.vim
 
 "> Go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}     " https://github.com/neoclide/coc.nvim
+Plug 'neoclide/coc.nvim', {'branch': 'release'}     " https://github.com/neoclide/coc.nvim
 Plug 'SirVer/ultisnips'                             " https://github.com/sirver/UltiSnips
 "Plug 'sheerun/vim-polyglot'
 
