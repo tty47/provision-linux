@@ -14,7 +14,7 @@ set $mod Mod4
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 #font pango:monospace 8
-font pango:Fira Code Medium 10
+font pango:Fira Code Medium 9
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -243,8 +243,8 @@ bar {
         #status_command i3status
         tray_output primary
         #status_command exec /home/joseramon/.config/i3status/mybar.sh
-        position top
-        #position bottom
+        #position top
+        position bottom
 
         colors {
 		    background $bg-color
