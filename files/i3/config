@@ -227,6 +227,7 @@ mode "resize" {
 bindsym $mod+Ctrl+l exec xlock -xinerama
 bindsym $mod+Ctrl+k exec power lock-only
 
+# Tmux Color #5eacd3
 # Color config
 set $bg-color 	         #2f343f
 set $inactive-bg-color   #2f343f
@@ -247,7 +248,7 @@ bar {
         ##position bottom
 
         colors {
-		    background $bg-color
+		background $bg-color
 	    	separator #757575
 		#                  border             background         text
 	    	focused_workspace  $bg-color          $bg-color          $text-color
