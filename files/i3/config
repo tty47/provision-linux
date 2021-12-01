@@ -244,8 +244,8 @@ bar {
         #status_command i3status
         tray_output primary
         #status_command exec /home/joseramon/.config/i3status/mybar.sh
-        position top
-        ##position bottom
+        #position top
+        position bottom
 
         colors {
 		background $bg-color

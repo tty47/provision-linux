@@ -1,0 +1,24 @@
+---
+ - name: "Import vars file"
+   include_vars: "../vars/main.yml"
+
+ - name: "Download LSD"
+   shell: |
+     curl -LO "https://github.com/Peltoche/lsd/releases/download/{{ tools.lsd.version }}/lsd_{{ tools.lsd.version }}_amd64.deb"
+     mv ./lsd_{{ tools.lsd.version }}_amd64.deb /tmp/lsd_{{ tools.lsd.version }}_amd64.deb
+   tags:
+     - lsd 
+     - tools 
+     - tunning 
+ 
+ - name: "Install lsd .deb package" 
+   command: dpkg -i /tmp/lsd_{{ tools.lsd.version }}_amd64.deb || true
+   tags:
+     - lsd 
+     - tools 
+     - tunning 
+ 
+ - name: "Remove lsd .deb file"
+   file:
+     status: absent
+     /apath: /tmp/lsd_{{ tools.lsd.version }}_amd64.deb

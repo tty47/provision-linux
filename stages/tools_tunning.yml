@@ -40,6 +40,7 @@
      - blueman
      - pulseaudio-module-bluetooth
      - fzf
+     - jp2a
 
  - name: Copy terminator configuration
    copy:
@@ -48,6 +49,9 @@
      owner: "{{ username }}"
      group: "{{ username }}"
      mode: '0644'
+   tags:
+     - tunning
+
  - name: Copy GTK-3.0 styles
    copy:
      src: ../files/gkt-3.0/gtk.css
@@ -55,6 +59,8 @@
      owner: "{{ username }}"
      group: "{{ username }}"
      mode: '0644'
+   tags:
+     - tunning
 
  - name: Copy i3 configuration
    copy:
