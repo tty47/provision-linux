@@ -87,7 +87,8 @@ bindsym XF86MonBrightnessDown exec xrandr --output eDP-1-1 --brightness 0.7
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec gnome-terminal
+#bindsym $mod+Return exec i3-sensible-terminal
 #bindsym $mod+Return exec terminator
 
 # kill focused window
@@ -243,6 +244,7 @@ bar {
         tray_output primary
         #status_command exec /home/joseramon/.config/i3status/mybar.sh
         position top
+        #position bottom
 
         colors {
 		    background $bg-color
@@ -284,3 +286,16 @@ mode "$mode_system" {
         bindsym Escape mode "default"
 }
 bindsym $mod+Shift+e mode "(S)uspend, (L)ogout, (R)eboot, (P)oweroff"
+
+# Move monitor to left or rith 
+set $monitor_side (L)eft, (R)igth
+mode "$monitor_side" {
+        bindsym l exec --no-startup-id xrandr --output HDMI-1-1 --auto --left-of eDP-1-1
+        bindsym r exec --no-startup-id xrandr --output HDMI-1-1 --auto --right-of eDP-1-1
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+bindsym $mod+Shift+m mode "(L)eft, (R)igth"
+
