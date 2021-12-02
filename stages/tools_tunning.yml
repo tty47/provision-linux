@@ -40,6 +40,7 @@
      - blueman
      - pulseaudio-module-bluetooth
      - fzf
+     - brightnessctl
 
  - name: Copy terminator configuration
    copy:

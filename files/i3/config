@@ -80,8 +80,14 @@ bindsym XF86AudioLowerVolume exec "amixer -q sset Master,0 1- unmute"
 bindsym XF86AudioMute exec "amixer -q sset Master,0 toggle"
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xrandr --output eDP-1-1 --brightness 1
-bindsym XF86MonBrightnessDown exec xrandr --output eDP-1-1 --brightness 0.7
+#bindsym XF86MonBrightnessUp exec xrandr --output eDP-1-1 --brightness 1
+#bindsym XF86MonBrightnessDown exec xrandr --output eDP-1-1 --brightness 0.7
+#
+bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+
+#bindsym XF86MonBrightnessUp exec brightness set +5%
+#bindsym XF86MonBrightnessDown exec brightness set 5%-
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -90,6 +96,9 @@ floating_modifier $mod
 bindsym $mod+Return exec gnome-terminal
 #bindsym $mod+Return exec i3-sensible-terminal
 #bindsym $mod+Return exec terminator
+# Terminal transparency
+exec --no-startup-id picom -CGb
+#exec_always --no-startup-id picom -CGb
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -244,8 +253,8 @@ bar {
         #status_command i3status
         tray_output primary
         #status_command exec /home/joseramon/.config/i3status/mybar.sh
-        position top
-        ##position bottom
+        #position top
+        position bottom
 
         colors {
 		background $bg-color
