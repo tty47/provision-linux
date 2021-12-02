@@ -104,6 +104,9 @@
  - name: Kubectl
    include_tasks: development/kubectl.yml
 
+ - name: Tools 
+   include_tasks: ./tools.yml
+
  - name: Install FrontEnd Development tools
    apt:
      name: "{{item}}"

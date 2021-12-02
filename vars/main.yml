@@ -5,8 +5,12 @@ global:
 development:
   golang:
     version: &golang_version "1.17"
-    mirror: "https://golang.org/dl/go"
+    mirror: "httips://golang.org/dl/go"
     install_dir: "/usr/local/go/"
     download_dir: "/tmp/go"
   etcd:
     version: 3.3.13
+
+tools:
+  lsd:
+    version: 0.20.1

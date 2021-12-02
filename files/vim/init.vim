@@ -51,31 +51,29 @@ call plug#begin('~/.vim/plugged')
 Plug 'ambv/black'
 
 " Plebvim lsp Plugins
-Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/nvim-compe'
-Plug 'nvim-lua/completion-nvim'
-Plug 'glepnir/lspsaga.nvim'
-Plug 'simrat39/symbols-outline.nvim'
+" Plug 'neovim/nvim-lspconfig'
+" Plug 'hrsh7th/nvim-compe'
+" Plug 'nvim-lua/completion-nvim'
+" Plug 'glepnir/lspsaga.nvim'
+" Plug 'simrat39/symbols-outline.nvim'
 
 " Plug 'tjdevries/nlua.nvim'
 " Plug 'tjdevries/lsp_extensions.nvim'
 
 " Neovim Tree shitter
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'nvim-treesitter/playground'
+" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" Plug 'nvim-treesitter/playground'
 
 " Debugger Plugins
 Plug 'puremourning/vimspector'
 Plug 'szw/vim-maximizer'
 
-" THANKS BFREDL
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
 Plug 'vim-utils/vim-man'
 Plug 'mbbill/undotree'
 Plug 'tpope/vim-dispatch'
 Plug 'theprimeagen/vim-be-good'
-Plug 'gruvbox-community/gruvbox'
 Plug 'tpope/vim-projectionist'
 
 " Set color scheme to gruvbox
@@ -88,7 +86,6 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'ThePrimeagen/git-worktree.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-
 Plug 'flazz/vim-colorschemes'
 Plug 'chriskempson/base16-vim'
 
@@ -96,20 +93,14 @@ Plug 'chriskempson/base16-vim'
 Plug 'ryanoasis/vim-devicons'
 
 " Tunning
- Plug 'itchyny/lightline.vim'
- Plug 'terryma/vim-multiple-cursors'
- Plug 'junegunn/fzf'
- Plug 'junegunn/fzf.vim'
-
-" HARPOON!!
-Plug 'mhinz/vim-rfc'
+Plug 'itchyny/lightline.vim'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'gruvbox-community/gruvbox'
 
 " prettier
 Plug 'sbdchd/neoformat'
-
-" should I try another status bar???
-" Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
-" Plug 'hoob3rt/lualine.nvim'
 
 "> Must Have
 Plug 'vim-airline/vim-airline' " https://github.com/vim-airline/vim-airline
@@ -153,9 +144,7 @@ highlight Normal guibg=none
 
 "-- papercolor-theme END
 
-" let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'CodeLLDB' ]
-
-lua require'nvim-treesitter.configs'.setup { highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true }}
+" lua require'nvim-treesitter.configs'.setup { highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true }}
 let g:vim_be_good_log_file = 1
 let g:vim_apm_log = 1
 
@@ -167,7 +156,6 @@ let loaded_matchparen = 1
 let mapleader = " "
 
 nnoremap <silent> Q <nop>
-" nnoremap <silent> <C-f> :lua require("harpoon.term").sendCommand(1, "tmux-sessionizer\n"); require("harpoon.term").gotoTerminal(1)<CR>
 nnoremap <leader>vwh :h <C-R>=expand("<cword>")<CR><CR>
 nnoremap <leader>bs /<C-R>=escape(expand("<cWORD>"), "/")<CR><CR>
 nnoremap <leader>u :UndotreeShow<CR>
@@ -227,9 +215,3 @@ augroup highlight_yank
     autocmd!
     autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 40})
 augroup END
-
-" augroup THE_PRIMEAGEN
-"    autocmd!
-"    autocmd BufWritePre * %s/\s\+$//e
-"    autocmd BufEnter,BufWinEnter,TabEnter *.rs :lua require'lsp_extensions'.inlay_hints{}
-" augroup END
