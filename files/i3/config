@@ -8,7 +8,7 @@
 # i3 config file (v4)
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
-
+# Set the main key
 set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -18,6 +18,9 @@ font pango:monospace 9
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
+
+# Disable mouse focus window
+focus_follows_mouse no
 
 # GET DEM BORDERS OUT OF HEREc:w
 #
