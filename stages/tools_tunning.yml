@@ -40,11 +40,8 @@
      - blueman
      - pulseaudio-module-bluetooth
      - fzf
-<<<<<<< HEAD
-     - brightnessctl
-=======
      - jp2a
->>>>>>> e5c7832981f3058089b311ed733dd548aa142067
+     - brightnessctl
 
  - name: Copy terminator configuration
    copy:

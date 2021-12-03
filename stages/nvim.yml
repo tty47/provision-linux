@@ -37,26 +37,6 @@
    with_items:
      - init.vim
 
- # - name: Copy Lua files
- #   ansible.builtin.copy:
- #     src: "../files/vim/{{ item }}"
- #     dest: "/home/{{ username }}/.config/nvim/{{ item }}/"
- #     owner: "{{ username }}"
- #     group: "{{ username }}"
- #     mode: '0644'
- #   with_items:
- #     - lua/
-
- - name: Copy Plugin folder
-   ansible.builtin.copy:
-     src: "../files/vim/{{ item }}"
-     dest: "/home/{{ username }}/.config/nvim/{{ item }}/"
-     owner: "{{ username }}"
-     group: "{{ username }}"
-     mode: '0644'
-   with_items:
-     - plugin/
-   ignore_errors: true
-
  - name: Install plugins VIM
    command: vim +'PlugInstall --sync' +qa
+
