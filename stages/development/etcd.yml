@@ -27,7 +27,6 @@
   copy:
     src: "/tmp/etcd-v{{ development.etcd.version }}-linux-amd64/{{ item }}"
     dest: /usr/local/bin/
-    #owner: "{{ global.user }}"
     owner: "{{ username }}"
     group: "root"
   with_items:

@@ -17,3 +17,38 @@
      - tools 
      - tunning 
 
+ - name: Create paths needed for scripts
+   file:
+     path: "/home/{{ username }}/.local/"
+     state: directory
+     owner: "{{ username }}"
+     group: "{{ username }}"
+   tags:
+     - tools 
+     - tunning 
+
+ - name: Create paths needed for scripts
+   file:
+     path: "/home/{{ username }}/.local/{{ item }}/"
+     state: directory
+     owner: "{{ username }}"
+     group: "{{ username }}"
+   with_items:
+     - bin 
+   tags:
+     - tools 
+     - tunning 
+ 
+ - name : Copy scripts
+   copy:
+     src: "{{ item }}" 
+     dest: "/home/{{ username }}/.local/bin/"
+     owner: "{{ username }}"
+     group: "{{ username }}"
+     mode: '0744'
+   with_fileglob:
+     - ../files/scripts/*
+   tags:
+     - tools 
+     - tunning 
+ 

@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+ACTION=$1
+
+if [[  $ACTION == "-" ]];then
+	sudo brightnessctl set 5%- >/dev/null 2>&1
+elif [[  $ACTION == "+" ]];then
+	sudo brightnessctl set +5% >/dev/null 2>&1
+else
+	echo "option not recognized..."
+fi
+
