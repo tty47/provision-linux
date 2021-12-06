@@ -139,6 +139,7 @@ alias gs="git status"
 alias gc="git clone"
 alias gfp="git fetch && git pull"
 alias gch='git checkout'
+alias gcd='git checkout dev && gfp'
 alias gurl='git config --get remote.origin.url'
 alias gourl='URL=`git config --get remote.origin.url` && google-chrome $URL'
 
@@ -159,6 +160,7 @@ alias kgqns='for i in $(kubectl get ns | cut -d" " -f1 | tail +2 );do echo -e "\
 alias dkall='docker rm $(docker ps -a -q) && docker rmi $(docker images -a -q) && docker rmi $(docker image ls) --prune && docker rm $(docker ps -a -f status=exited -q) && docker system prune -a'
 alias d="docker"
 alias dps="docker ps"
+alias wdps="watch docker ps"
 alias drm="docker stop $(docker ps -qa --no-trunc --filter "status=exited")"
 
 ######################
