@@ -7,6 +7,6 @@ if [[  $ACTION == "-" ]];then
 elif [[  $ACTION == "+" ]];then
 	sudo brightnessctl set +5% >/dev/null 2>&1
 else
-	echo "option not recognized..."
+	echo "Current brightness is: $(sudo brightnessctl | grep Current | grep '(' | cut -d'(' -f2 | cut -d')' -f1)"
 fi
 

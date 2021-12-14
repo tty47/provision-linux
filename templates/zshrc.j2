@@ -164,6 +164,14 @@ alias dps="docker ps"
 alias wdps="watch docker ps"
 alias drm="docker stop $(docker ps -qa --no-trunc --filter "status=exited")"
 
+
+######################
+######################
+#
+function rmdo(){
+	IDC=$(docker ps| tail -n +2 | cut -d' ' -f1) ;d stop $IDC ; d rm $IDC 
+}
+
 ######################
 ######################
 
