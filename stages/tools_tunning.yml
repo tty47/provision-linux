@@ -42,7 +42,7 @@
      - jp2a
      - brightnessctl
 
- - name: Create paths needed for terminator
+ - name: Create paths needed for terminator & GTK-3.0
    file:
      path: "/home/{{ username }}/.config/{{ item }}/"
      state: directory
@@ -51,6 +51,7 @@
    with_items:
      - /terminator
      - /terminator/config
+     - /gtk-3.0
      
  - name: Copy terminator configuration
    copy:
