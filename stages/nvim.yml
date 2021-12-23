@@ -13,7 +13,6 @@
      update_cache: yes
    with_items:
      - python-dev
-     - python-pip
      - python3-pip
      - neovim
 
