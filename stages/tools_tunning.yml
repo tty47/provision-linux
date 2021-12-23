@@ -22,6 +22,7 @@
      - fonts-firacode
      - i3
      - i3lock
+     - i3blocks
      - i3status
      - dmenu
      - lightdm
