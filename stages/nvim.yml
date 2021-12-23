@@ -8,9 +8,14 @@
 
  - name: Setup VIM
    apt:
-     name: neovim
+     name: "{{ item }}"
      state: present
      update_cache: yes
+   with_items:
+     - python-dev
+     - python-pip
+     - python3-pip
+     - neovim
 
  - name: Download Plug Installer
    shell: |
@@ -39,4 +44,3 @@
 
  - name: Install plugins VIM
    command: vim +'PlugInstall --sync' +qa
-
