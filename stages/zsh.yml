@@ -9,6 +9,15 @@
     - vim
     - zsh
 
+ - name: Create paths needed for ZSH
+   file:
+     path: "/home/{{ username }}/{{ item }}"
+     state: directory
+     owner: "{{ username }}"
+     group: "{{ username }}"
+   with_items:
+     - /.oh-my-zsh/custom/plugins
+
  - name: Copy file with owner and permissions
    ansible.builtin.template:
      src: ../templates/zshrc.j2
