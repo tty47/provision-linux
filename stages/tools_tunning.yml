@@ -5,7 +5,6 @@
      state: present
      update_cache: true
    loop:
-     - gnome-tweak-tool
      - chrome-gnome-shell
      - gnome-weather
      - gnome-clocks
@@ -43,6 +42,15 @@
      - jp2a
      - brightnessctl
 
+ - name: Create paths needed for terminator
+   file:
+     path: "/home/{{ username }}/.config/{{ item }}/"
+     state: directory
+     owner: "{{ username }}"
+     group: "{{ username }}"
+   with_items:
+     - /terminator
+     
  - name: Copy terminator configuration
    copy:
      src: ../files/terminator/config
