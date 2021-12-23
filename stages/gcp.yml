@@ -27,4 +27,3 @@
      update_cache: yes
    loop:
      -  google-cloud-sdk
-     -  google-cloud-sdk-cloud-build-local
