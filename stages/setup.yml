@@ -83,7 +83,6 @@
      - unrar
      - zip
      - unzip
-     - rar
      - jq
      - code
      - meld
