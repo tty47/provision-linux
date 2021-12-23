@@ -50,6 +50,7 @@
      group: "{{ username }}"
    with_items:
      - /terminator
+     - /terminator/config
      
  - name: Copy terminator configuration
    copy:
