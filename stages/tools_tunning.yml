@@ -53,6 +53,7 @@
      - /terminator
      - /terminator/config
      - /gtk-3.0
+     - /i3
      
  - name: Copy terminator configuration
    copy:
