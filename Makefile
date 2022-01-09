@@ -10,7 +10,7 @@ clear:
 all: clear install_ansible setup
 
 install_ansible:
-	sudo apt install -y ansible
+	sudo apt install -y ansible make
 
 setup:
 	sudo ansible-playbook main.yml --extra-vars "username=$(USER)"
