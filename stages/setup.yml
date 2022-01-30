@@ -41,7 +41,9 @@
      - libcurl4-openssl-dev 
      - software-properties-common 
      - libffi-dev 
-     - magic-wormhole 
+     - magic-wormhole
+     - samba
+     - samba-client
 
  - name: Enale tlp
    command: systemctl enable tlp
