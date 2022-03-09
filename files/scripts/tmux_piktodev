@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+PIKTODEV=/Volumes/Data/workspace/Piktochart/piktodev/
+
+# Move the first pane to the workdir
+tmux send-keys -t 0.0 "cd ${PIKTODEV} && clear" ENTER
+
+# Split the panes and send them to the workdir
+tmux split-window -h -p 75 -c "${PIKTODEV}"
+tmux split-window -h -p 66 -c "${PIKTODEV}"
+tmux split-window -h -p 50 -c "${PIKTODEV}"
