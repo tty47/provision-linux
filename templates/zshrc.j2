@@ -166,11 +166,48 @@ alias drm="docker stop $(docker ps -qa --no-trunc --filter "status=exited")"
 
 ######################
 ######################
-#
+# Stops and delete first container detect
 function rmdo(){
 	IDC=$(docker ps| tail -n +2 | cut -d' ' -f1) ;d stop $IDC ; d rm $IDC 
 }
-
+# Setup needed files for Terraform
+function setup_tf(){
+	touch main.tf variables.tf output.tf README.md
+}
+# Get pods in nodes
+function pono(){
+	 for i in $(kubectl get no --no-headers -o=custom-columns=NAME:.metadata.name); do 
+		 echo -e "\e[0;37m\033[1m ---------- Node: \e[0;33m\033[1m $i  \e[0;37m\033[1m ----------\033[0m\e[0m \n"
+		 kubectl describe no $i |grep Non -A 35 |grep -B 30 -m 1 "Allocated"|grep -v "Allocated"
+		 echo "\n"
+	done
+}
+# Shows the allocated resources in the nodes
+function kallocated(){
+for node in $(kubectl  get no --no-headers -o=custom-columns=NAME:.metadata.name); do 
+	echo "------ NODE $node ----- \n"
+	kubectl describe no $node |grep "Allocated" -A 9
+done
+}
+# Shows the allocated resources in the nodes
+function wkallocated(){
+	while true; do 
+		for node in $(kubectl  get no --no-headers -o=custom-columns=NAME:.metadata.name); do 
+			echo "------ NODE $node ----- \n"
+			kubectl describe no $node |grep "Allocated" -A 9
+		done
+	done
+}
+# Stop and delete container
+function dsr(){
+	docker stop $1
+	docker rm $1
+}
+# Return the redis password decripted
+function redis_pass(){
+	kubectl get secret -n derive-service redis-secrets -o jsonpath='{.data.REDIS_PASS}'|base64 -d
+}
+######################
 ######################
 ######################
 
