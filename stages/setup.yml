@@ -64,6 +64,8 @@
      - software-properties-common
      - ca-certificates
      - gnupg
+     - lsb-release
+     - apache2-utils
      - apt-transport-https
      - git
      - pip
