@@ -57,13 +57,6 @@ exec_always feh --bg-scale /home/joseramon/Pictures/Wallpapers/pictures/IMG_2479
 exec_always unity-settings-daemon
 exec_always restart
 
-#exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-backlight-helper
-#exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-keyboard
-#exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-mouse
-#exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-media-keys
-#exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-sound
-#exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-backlight-helper
-
 exec --no-startup-id /usr/libexec/gsd-xsettings
 exec --no-startup-id /usr/libexec/gsd-keyboard
 exec --no-startup-id /usr/libexec/gsd-mouse
