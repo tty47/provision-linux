@@ -22,8 +22,44 @@ set clipboard=unnamed
 set noscrollbind
 set wildmenu
 set autochdir
+" Highlight current line
+set cursorline
+:highlight Cursorline cterm=bold ctermbg=black
+" Enagle highlight search pattern "
+set hlsearch
+" Enable smartcase search sensitivity
+set ignorecase
+set smartcase
 
 hi Search cterm=NONE ctermfg=black ctermbg=red
+
+" Indentation using spaces "
+" tabstop:      width of tab character
+" softtabstop:  fine tunes the amount of whitespace to be added
+" shiftwidth:   determines the amount of whitespace to add in normal mode
+" expandtab:    when on use space instead of tab
+" textwidth:    text wrap width
+" autoindent:   autoindent in new line
+set tabstop     =4
+set softtabstop =4
+set shiftwidth  =4
+set textwidth   =79
+set expandtab
+set autoindent
+
+" show the matching part of pairs [] {} and () "
+set showmatch
+
+" remove trailing whitespace from Python and Fortran files "
+autocmd BufWritePre *.py :%s/\s\+$//e
+autocmd BufWritePre *.f90 :%s/\s\+$//e
+autocmd BufWritePre *.f95 :%s/\s\+$//e
+autocmd BufWritePre *.for :%s/\s\+$//e
+
+" enable color themes "
+if !has('gui_running')
+        set t_Co=256
+endif
 
 nnoremap - :Explore<CR>
 let g:netrw_banner = 0
