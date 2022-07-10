@@ -1,6 +1,5 @@
-set path+=**
+let mapleader = ","
 
-" From other repo
 filetype on
 filetype indent on
 filetype plugin on
@@ -9,14 +8,13 @@ set encoding=UTF-8
 
 syntax on
 set nocompatible
-set hlsearch
 set number relativenumber
 set laststatus=2
 set vb
 set ruler
 set spelllang=en_us
-set autoindent
-set colorcolumn=90
+set colorcolumn=80
+" set colorcolumn=200
 set mouse=a
 set clipboard=unnamed
 set noscrollbind
@@ -31,21 +29,24 @@ set hlsearch
 set ignorecase
 set smartcase
 
+" Spaces as dots
+
+set list
+" set listchars=eol:↓,tab:\ \ ┊,trail:●,extends:…,precedes:…,space:·
+set listchars=eol:⏎,tab:\ \ ┊,trail:●,extends:…,precedes:…,space:·
+
+" split style
+" set fillchars=vert:▒
+
 hi Search cterm=NONE ctermfg=black ctermbg=red
 
 " Indentation using spaces "
-" tabstop:      width of tab character
-" softtabstop:  fine tunes the amount of whitespace to be added
-" shiftwidth:   determines the amount of whitespace to add in normal mode
-" expandtab:    when on use space instead of tab
-" textwidth:    text wrap width
-" autoindent:   autoindent in new line
-set tabstop     =4
-set softtabstop =4
-set shiftwidth  =4
-set textwidth   =79
-set expandtab
-set autoindent
+set tabstop	=4 " tabstop:	width of tab character
+set softtabstop	=4 " softtabstop:	fine tunes the amount of whitespace to be added
+set shiftwidth	=4 " shiftwidth:	determines the amount of whitespace to add in normal mode
+set textwidth	=79 " textwidth:	text wrap width
+set expandtab " expandtab:	when on use space instead of tab
+" set autoindent " autoindent:	autoindent in new line
 
 " show the matching part of pairs [] {} and () "
 set showmatch
@@ -58,86 +59,40 @@ autocmd BufWritePre *.for :%s/\s\+$//e
 
 " enable color themes "
 if !has('gui_running')
-        set t_Co=256
+	set t_Co=256
 endif
 
-nnoremap - :Explore<CR>
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
-autocmd FileType netrw setl bufhidden=delete
+" No more Arrow Keys, deal with it
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
 
-" #############
+" netrw
+" nnoremap - :Explore<CR>
+" let g:netrw_banner = 0
+" let g:netrw_liststyle = 3
+" let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
+" autocmd FileType netrw setl bufhidden=delete
+"-- netrw END
+"
+" NERDTree
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-b> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+" End NERDTree
 
-" Nice menu when typing `:find *.py`
-set wildmode=longest,list,full
-set wildmenu
-" Ignore files
-set wildignore+=*.pyc
-set wildignore+=*_build/*
-set wildignore+=**/coverage/*
-set wildignore+=**/node_modules/*
-set wildignore+=**/android/*
-set wildignore+=**/ios/*
-set wildignore+=**/.git/*
+" Tabs
+nnoremap <C-j> :tabprevious<CR> 
+nnoremap <C-k> :tabnext<CR>
+" End Tabs
 
-call plug#begin('~/.vim/plugged')
+" Reload Config
+nnoremap <Leader>r :source $MYVIMRC<CR>
 
-" Yes, I am a sneaky snek now
-Plug 'ambv/black'
-
-" Plebvim lsp Plugins
-" Plug 'neovim/nvim-lspconfig'
-" Plug 'hrsh7th/nvim-compe'
-" Plug 'nvim-lua/completion-nvim'
-" Plug 'glepnir/lspsaga.nvim'
-" Plug 'simrat39/symbols-outline.nvim'
-
-" Plug 'tjdevries/nlua.nvim'
-" Plug 'tjdevries/lsp_extensions.nvim'
-
-" Neovim Tree shitter
-" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-" Plug 'nvim-treesitter/playground'
-
-" Debugger Plugins
-Plug 'puremourning/vimspector'
-Plug 'szw/vim-maximizer'
-
-Plug 'tpope/vim-fugitive'
-Plug 'junegunn/gv.vim'
-Plug 'vim-utils/vim-man'
-Plug 'mbbill/undotree'
-Plug 'tpope/vim-dispatch'
-Plug 'theprimeagen/vim-be-good'
-Plug 'tpope/vim-projectionist'
-
-" Set color scheme to gruvbox
-" telescope requirements...
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim' " Installation recommended
-Plug 'nvim-telescope/telescope.nvim' " Installation recommended
-" Plug 'nvim-telescope/telescope-fzy-native.nvim'
-Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
-Plug 'ThePrimeagen/git-worktree.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-Plug 'flazz/vim-colorschemes'
-Plug 'chriskempson/base16-vim'
-
-" Icons
-Plug 'ryanoasis/vim-devicons'
-
-" Tunning
-Plug 'itchyny/lightline.vim'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
-Plug 'gruvbox-community/gruvbox'
-
-" prettier
-Plug 'sbdchd/neoformat'
-
+" plug 
+call plug#begin()
 "> Must Have
 Plug 'vim-airline/vim-airline' " https://github.com/vim-airline/vim-airline
 Plug 'ctrlpvim/ctrlp.vim'      " https://github.com/ctrlpvim/ctrlp.vim
@@ -145,17 +100,50 @@ Plug 'ryanoasis/vim-devicons'  " https://github.com/ryanoasis/vim-devicons + htt
 Plug 'tpope/vim-commentary'    " https://github.com/tpope/vim-commentary
 Plug 'airblade/vim-gitgutter'  " https://github.com/airblade/vim-gitgutter
 Plug 'mkitt/tabline.vim'       " https://github.com/mkitt/tabline.vim
+Plug 'gruvbox-community/gruvbox' " Gruvbox theme
+
+" Vim-Poligot
+Plug 'sheerun/vim-polyglot' " https://vimawesome.com/plugin/vim-polyglot
+
+" Telescope requirements...
+" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " FZF
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzy-native.nvim'
+
+" LSP completion source for nvim-cmp
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
+Plug 'onsails/lspkind-nvim'
+Plug 'nvim-lua/lsp_extensions.nvim'
 
 "> Go
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' } " https://github.com/fatih/vim-go
 Plug 'neoclide/coc.nvim', {'branch': 'release'}     " https://github.com/neoclide/coc.nvim
 Plug 'SirVer/ultisnips'                             " https://github.com/sirver/UltiSnips
-"Plug 'sheerun/vim-polyglot'
+Plug 'darrikonn/vim-gofmt'
 
-"> Theme
+"> Rust
+Plug 'simrat39/rust-tools.nvim'
+Plug 'rust-lang/rust.vim'
+
+"> Themes
 Plug 'NLKNguyen/papercolor-theme' " https://github.com/NLKNguyen/papercolor-theme
+Plug 'jim-at-jibba/ariake-vim-colors' 
+Plug 'sainnhe/sonokai'
+Plug 'sainnhe/gruvbox-material'
+Plug 'shaunsingh/nord.nvim'
+Plug 'cocopon/iceberg.vim'
+Plug 'jim-at-jibba/ariake-vim-colors'
+Plug 'catppuccin/nvim', {'as': 'catppuccin'} " https://github.com/catppuccin/nvim
 
+Plug 'preservim/nerdtree'
 call plug#end()
+
 "-- plug END
 
 " ctrlp
@@ -163,91 +151,29 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
 " vim-gitgutter
-
 set updatetime=500
-
 "-- vim-gitgutter END
 
+" Color selecction
 " papercolor-theme
-
 set termguicolors
-" set background=dark
-" colorscheme PaperColor
-
+set background=dark
 " Set color scheme to gruvbox
-colorscheme gruvbox
+" colorscheme gruvbox
+colorscheme iceberg
+filetype plugin indent on
+set background=dark
+
 highlight Normal guibg=none
+" colorscheme PaperColor
+"-- papercolor-theme END 
 
-"-- papercolor-theme END
-
-" lua require'nvim-treesitter.configs'.setup { highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true }}
-let g:vim_be_good_log_file = 1
-let g:vim_apm_log = 1
-
-if executable('rg')
-    let g:rg_derive_root='true'
-endif
-
-let loaded_matchparen = 1
-let mapleader = " "
-
-nnoremap <silent> Q <nop>
-nnoremap <leader>vwh :h <C-R>=expand("<cword>")<CR><CR>
-nnoremap <leader>bs /<C-R>=escape(expand("<cWORD>"), "/")<CR><CR>
-nnoremap <leader>u :UndotreeShow<CR>
-nnoremap <leader>pv :Ex<CR>
-nnoremap <Leader><CR> :so ~/.config/nvim/init.vim<CR>
+map <leader>nt :Ntree<cr>
+nnoremap <Leader>f :lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({}))<cr>
+" Change an option
+" nnoremap <Leader>f :lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ winblend = 10 }))<cr>
 nnoremap <Leader>+ :vertical resize +5<CR>
 nnoremap <Leader>- :vertical resize -5<CR>
 nnoremap <Leader>rp :resize 100<CR>
-nnoremap <Leader>ee oif err != nil {<CR>log.Fatalf("%+v\n", err)<CR>}<CR><esc>kkI<esc>
+nnoremap <leader>pv :Ex<CR>
 nnoremap <Leader>cpu a%" PRIu64 "<esc>
-nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
-nnoremap <leader>gt <Plug>PlenaryTestFile
-nnoremap <leader>vwm :lua require("vim-with-me").init()<CR>
-nnoremap <leader>dwm :lua require("vim-with-me").disconnect()<CR>
-nnoremap <leader>gll :let g:_search_term = expand("%")<CR><bar>:Gclog -- %<CR>:call search(g:_search_term)<CR>
-nnoremap <leader>gln :cnext<CR>:call search(_search_term)<CR>
-nnoremap <leader>glp :cprev<CR>:call search(_search_term)<CR>
-
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
-
-" greatest remap ever
-xnoremap <leader>p "_dP
-
-" next greatest remap ever : asbjornHaland
-nnoremap <leader>y "+y
-vnoremap <leader>y "+y
-nnoremap <leader>Y gg"+yG
-
-nnoremap <leader>d "_d
-vnoremap <leader>d "_d
-
-" vim TODO
-nmap <Leader>tu <Plug>BujoChecknormal
-nmap <Leader>th <Plug>BujoAddnormal
-let g:bujo#todo_file_path = $HOME . "/.cache/bujo"
-
-nnoremap <Leader>ww ofunction wait(ms: number): Promise<void> {<CR>return new Promise(res => setTimeout(res, ms));<CR>}<esc>k=i{<CR>
-
-inoremap <C-c> <esc>
-
-fun! EmptyRegisters()
-    let regs=split('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/-"', '\zs')
-    for r in regs
-        call setreg(r, [])
-    endfor
-endfun
-
-" ES
-com! W w
-
-nmap <leader>nn :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
-\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
-\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
-
-augroup highlight_yank
-    autocmd!
-    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 40})
-augroup END
