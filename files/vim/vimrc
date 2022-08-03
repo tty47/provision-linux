@@ -102,7 +102,48 @@ call plug#end()
 
 "-- plug END
 
-noremap ww :w<CR>
+" ctrlp
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
-nmap <Leader>s <Plug>(easymotion-s2)
-nmap <Leader>nt :NERDTreeFind<CR>
+" vim-gitgutter
+set updatetime=500
+"-- vim-gitgutter END
+
+" Color selecction
+" papercolor-theme
+set termguicolors
+set background=dark
+" Set color scheme to gruvbox
+" colorscheme gruvbox
+colorscheme iceberg
+" colorscheme tokyonight
+filetype plugin indent on
+set background=dark
+
+highlight Normal guibg=none
+" colorscheme PaperColor
+"-- papercolor-theme END 
+
+map <leader>nt :Ntree<cr>
+
+" Telescope
+nnoremap <Leader>f :lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({}))<cr>
+" Change an option
+" nnoremap <Leader>f :lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ winblend = 10 }))<cr>
+
+nnoremap <Leader>+ :vertical resize +5<CR>
+nnoremap <Leader>- :vertical resize -5<CR>
+nnoremap <Leader>rp :resize 100<CR>
+nnoremap <leader>pv :Ex<CR>
+nnoremap <Leader>cpu a%" PRIu64 "<esc>
+
+
+" New
+au FileType gitcommit setlocal ts=4 " otherwise the builtin default of 8 kicks in
+au FileType mail silent setl ft=mail tw=72 fo+=tn comments+=fb:*
+au FileType mail silent /^$
+au FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
+au BufEnter testdata/*.txt silent setl ft=sh
+nnoremap <space> :noh<cr>:echo<cr><esc>
