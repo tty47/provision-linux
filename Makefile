@@ -10,4 +10,4 @@ setup:
 	sudo ansible-playbook main.yml --extra-vars "username=$(USER)"
 setup_debug:
 	sudo ansible-playbook main.yml --extra-vars "username=$(USER) -vvv"
-all: clear install_ansible setup
+all: install_ansible setup
