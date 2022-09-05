@@ -15,7 +15,6 @@
      - ansible
      - neofetch
      - vlc
-       #     - google-chrome-stable
      - meld
      - vlc
      - terminator
@@ -84,7 +83,7 @@
      - libssl-dev
      - python-dev
      - nano
-     - unrar
+     - unrar-free
      - zip
      - unzip
      - jq
