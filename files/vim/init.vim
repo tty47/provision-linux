@@ -1,8 +1,8 @@
-let mapleader = ","
+let mapleader = " "
 
 filetype on
-filetype indent on
-filetype plugin on
+filetype plugin indent on
+set synmaxcol=200
 
 set encoding=UTF-8
 
@@ -75,7 +75,7 @@ noremap <Right> <NOP>
 " let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
 " autocmd FileType netrw setl bufhidden=delete
 "-- netrw END
-"
+
 " NERDTree
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
@@ -100,7 +100,6 @@ Plug 'ryanoasis/vim-devicons'  " https://github.com/ryanoasis/vim-devicons + htt
 Plug 'tpope/vim-commentary'    " https://github.com/tpope/vim-commentary
 Plug 'airblade/vim-gitgutter'  " https://github.com/airblade/vim-gitgutter
 Plug 'mkitt/tabline.vim'       " https://github.com/mkitt/tabline.vim
-Plug 'gruvbox-community/gruvbox' " Gruvbox theme
 
 " Vim-Poligot
 Plug 'sheerun/vim-polyglot' " https://vimawesome.com/plugin/vim-polyglot
@@ -117,9 +116,10 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/nvim-cmp'
-Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
+" Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
 Plug 'onsails/lspkind-nvim'
 Plug 'nvim-lua/lsp_extensions.nvim'
+Plug 'williamboman/mason.nvim'
 
 "> Go
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' } " https://github.com/fatih/vim-go
@@ -132,6 +132,8 @@ Plug 'simrat39/rust-tools.nvim'
 Plug 'rust-lang/rust.vim'
 
 "> Themes
+Plug 'gruvbox-community/gruvbox' " Gruvbox theme
+Plug 'luisiacc/gruvbox-baby'
 Plug 'NLKNguyen/papercolor-theme' " https://github.com/NLKNguyen/papercolor-theme
 Plug 'jim-at-jibba/ariake-vim-colors' 
 Plug 'sainnhe/sonokai'
@@ -140,6 +142,10 @@ Plug 'shaunsingh/nord.nvim'
 Plug 'cocopon/iceberg.vim'
 Plug 'jim-at-jibba/ariake-vim-colors'
 Plug 'catppuccin/nvim', {'as': 'catppuccin'} " https://github.com/catppuccin/nvim
+Plug 'tpope/vim-projectionist'
+Plug 'tomlion/vim-solidity'
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' } " https://github.com/folke/tokyonight.nvim
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 Plug 'preservim/nerdtree'
 call plug#end()
@@ -160,7 +166,8 @@ set termguicolors
 set background=dark
 " Set color scheme to gruvbox
 " colorscheme gruvbox
-colorscheme iceberg
+" colorscheme iceberg
+colorscheme tokyonight
 filetype plugin indent on
 set background=dark
 
@@ -169,11 +176,110 @@ highlight Normal guibg=none
 "-- papercolor-theme END 
 
 map <leader>nt :Ntree<cr>
-nnoremap <Leader>f :lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({}))<cr>
-" Change an option
-" nnoremap <Leader>f :lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ winblend = 10 }))<cr>
+
+" Telescope
+" Vertical layout
+" theme=require('telescope.themes').get_ivy()
+" theme['find_command'] = opts.find_command
+" theme['layout_config']['height'] = 10
+" require('telescope.builtin').find_files(theme)
+" nnoremap <Leader>f :lua require'telescope.builtin'.find_files(theme)<cr>
+" Horizontal layout
+" nnoremap <Leader>f :lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({}))<cr>
+
 nnoremap <Leader>+ :vertical resize +5<CR>
 nnoremap <Leader>- :vertical resize -5<CR>
 nnoremap <Leader>rp :resize 100<CR>
 nnoremap <leader>pv :Ex<CR>
 nnoremap <Leader>cpu a%" PRIu64 "<esc>
+
+" New
+au FileType gitcommit setlocal ts=4 " otherwise the builtin default of 8 kicks in
+au FileType mail silent setl ft=mail tw=72 fo+=tn comments+=fb:*
+au FileType mail silent /^$
+au FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
+au BufEnter testdata/*.txt silent setl ft=sh
+nnoremap <space> :noh<cr>:echo<cr><esc>
+
+
+" All LUA configuration withing this block
+lua <<EOF
+-- TREESITTER
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    ensure_installed = { "bash", "lua", "rust", "yaml", "dockerfile", "hcl", "go", "gomod", "json", "nix", "python", "vim" },
+    enable = true,
+    custom_captures = {
+      -- Highlight the @foo.bar capture group with the "Identifier" highlight group.
+      ["foo.bar"] = "Identifier",
+    },
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+}
+
+require'nvim-treesitter.configs'.setup {
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = "gnn",
+      node_incremental = "grn",
+      scope_incremental = "grc",
+      node_decremental = "grm",
+    },
+  },
+}
+
+require('telescope').setup{
+  defaults = {
+    vimgrep_arguments = {
+      'rg',
+      '--color=never',
+      '--no-heading',
+      '--with-filename',
+      '--line-number',
+      '--column',
+      '--smart-case'
+    },
+    prompt_prefix = "> ",
+    selection_caret = "> ",
+    entry_prefix = "  ",
+    initial_mode = "insert",
+    selection_strategy = "reset",
+    sorting_strategy = "descending",
+    layout_strategy = "horizontal",
+    layout_config = {
+      horizontal = {
+        mirror = false,
+      },
+      vertical = {
+        mirror = false,
+      },
+    },
+    file_sorter =  require'telescope.sorters'.get_fuzzy_file,
+    file_ignore_patterns = {},
+    generic_sorter =  require'telescope.sorters'.get_generic_fuzzy_sorter,
+    winblend = 0,
+    border = {},
+    borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
+    color_devicons = true,
+    use_less = true,
+    path_display = {},
+    set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,
+    file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
+    grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
+    qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
+
+    -- Developer configurations: Not meant for general override
+    buffer_previewer_maker = require'telescope.previewers'.buffer_previewer_maker
+  }
+}
+EOF
+
+" nnoremap <Leader>f :lua require'telescope.builtin'.find_files(theme)<cr>
+nnoremap <Leader>f :lua require'telescope.builtin'.find_files()<cr>
+nnoremap <Leader>n :lua require'telescope.builtin'.treesitter(require('telescope.themes').get_dropdown({}))<cr>
