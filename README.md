@@ -21,7 +21,8 @@ sudo ansible-playbook main.yml --extra-vars "username=<username>"
 
 ## Installation
 ```bash
-sudo apt update; sudo apt install -y make git ansible && bash <(curl -s https://raw.githubusercontent.com/jrmanes/provision-linux/master/start.sh)
+sudo apt update; sudo apt install -y make git ansible curl sudo && \
+bash <(curl -s https://raw.githubusercontent.com/jrmanes/provision-linux/master/start.sh)
 ```
 
 ---
