@@ -54,6 +54,19 @@
      sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
      rm -f packages.microsoft.gpg
 
+ - name: Add Firefox Repositories
+   become: true
+   shell: |
+     sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A6DCF7707EBC211F
+     sudo apt-add-repository "deb http://ppa.launchpad.net/ubuntu-mozilla-security/ppa/ubuntu focal main"
+     sudo apt update
+
+ - name: Install Firefox
+   apt:
+     name: firefox
+     state: present
+     update_cache: true
+
  - name: Install Dev Utils
    apt:
      name: "{{item}}"
