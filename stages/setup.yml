@@ -9,7 +9,6 @@
      - unattended-upgrades
      - htop
      - net-tools
-     - docker
      - docker.io
      - docker-compose
      - ansible
@@ -43,6 +42,7 @@
      - magic-wormhole
      - samba
      - samba-client
+     - gh
 
  - name: Enale tlp
    command: systemctl enable tlp
@@ -53,19 +53,6 @@
      sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/
      sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
      rm -f packages.microsoft.gpg
-
- - name: Add Firefox Repositories
-   become: true
-   shell: |
-     sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A6DCF7707EBC211F
-     sudo apt-add-repository "deb http://ppa.launchpad.net/ubuntu-mozilla-security/ppa/ubuntu focal main"
-     sudo apt update
-
- - name: Install Firefox
-   apt:
-     name: firefox
-     state: present
-     update_cache: true
 
  - name: Install Dev Utils
    apt:
@@ -94,7 +81,6 @@
      - curl
      - build-essential
      - libssl-dev
-     - python-dev
      - nano
      - unrar-free
      - zip
@@ -105,7 +91,6 @@
      - rofi
      - xclip
      - apache2-utils
-     - libtepl-5-0
      - libgtk-3-dev
      - libwebkit2gtk-4.0-dev
      - lua5.3

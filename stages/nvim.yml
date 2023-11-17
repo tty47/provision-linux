@@ -12,7 +12,6 @@
      state: present
      update_cache: yes
    with_items:
-     - python-dev
      - python3-pip
      - neovim
 
