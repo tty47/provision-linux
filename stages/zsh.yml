@@ -1,14 +1,4 @@
 ---
- - name: Setup VIM
-   apt:
-     name: "{{ item }}"
-     state: present
-     update_cache: yes
-   loop:
-    - git
-    - vim
-    - zsh
-
  - name: Create paths needed for ZSH
    file:
      path: "/home/{{ username }}/{{ item }}"
@@ -30,10 +20,10 @@
    #become_user: "{{ username }}"
    shell: "chsh -s $(which zsh)"
    
- - name: Download ZSH Plugins
-   get_url:
-     url: "{{ item }}"
-     dest: "/home/{{ username }}/.oh-my-zsh/custom/plugins/"
-     force: no
-   loop:
-    - https://github.com/zsh-users/zsh-syntax-highlighting.git
+#  - name: Download ZSH Plugins
+#    get_url:
+#      url: "{{ item }}"
+#      dest: "/home/{{ username }}/.oh-my-zsh/custom/plugins/"
+#      force: no
+#    loop:
+#     - https://github.com/zsh-users/zsh-syntax-highlighting.git

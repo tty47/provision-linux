@@ -85,6 +85,10 @@
    with_items:
      - config
      - i3blocks.conf
+   tags:
+    - i3
+    - tunning
+    - development
 
  - name : Create needed paths for Tmux installation
    file:
