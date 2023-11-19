@@ -74,21 +74,21 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-	git
-	colored-man-pages
-	history
-	rbenv
-	zsh-autosuggestions
-	bundler
-	dotenv
-	rake
+  git
+  docker
+  docker-compose
+  zsh-syntax-highlighting
+  zsh-autosuggestions
+ # autojump
+  dnf
 )
-
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
+
+export PATH="${HOME}/.local/share/lua-language-server/bin/:${PATH}"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -110,7 +110,7 @@ source $ZSH/oh-my-zsh.sh
 
 ######################
 ######################
-alias profile="vim ~/.zshrc"
+alias profile="vim ~/.zshrc && source ~/.zshrc"
 alias rprofile="source ~/.zshrc"
 
 # Golang
@@ -125,12 +125,16 @@ alias devops="cd /media/Data/DevOps/"
 alias o="nautilus . &"
 alias open="nautilus . &"
 alias m="make"
-alias t="tmux"
+alias t="terraform"
 alias vim="nvim"
+alias v="nvim"
 alias copy='xclip -sel clip'
 alias c='xclip -sel clip'
 alias pwdc='pwd | xclip -sel clip'
 alias ls='lsd'
+alias cat='bat'
+alias catt='/bin/cat'
+alias capi='clusterapi'
 
 # Git
 alias g="git"
@@ -139,8 +143,12 @@ alias gc="git clone"
 alias gfp="git fetch && git pull"
 alias gch='git checkout'
 alias gcd='git checkout dev && gfp'
-alias gurl='git config --get remote.origin.url'
-alias gourl='URL=`git config --get remote.origin.url` && google-chrome $URL'
+alias gr='git remove -v'
+# linux
+#alias gurl='git config --get remote.origin.url'
+alias gourl='open $(git ls-remote --get-url)'
+alias gw="git worktree"
+alias gwl="git worktree list"
 
 # Kubernetes
 alias k='kubectl'
@@ -155,17 +163,26 @@ alias kl='kubectl logs -f'
 alias kgall='k get deploy,sts,job,ds,rs,po,pvc,rc,svc,cm,secrets'
 alias kgqns='for i in $(kubectl get ns | cut -d" " -f1 | tail +2 );do echo -e "\e[94mNS:\e[24m \e[32m$i\e[39m" && k describe quota -n $i; done'
 alias kgpw='kubectl get pods --all-namespaces -w'
+alias wkgno='watch kubectl get no -o wide'
+alias kpns='kubectl get pods -A --no-headers -o=custom-columns=NAME:.metadata.name,NAMESPACE:.metadata.namespace,STATUS:.status.phase'
+alias kke='kubectl kustomize --enable-helm'
+alias kdpvr='kubectl get pv -A | grep Released | cut -d' ' -f1 | xargs -I {} kubectl delete pv {}'
 
 # Docker
-alias dkall='docker rm $(docker ps -a -q) && docker rmi $(docker images -a -q) && docker rmi $(docker image ls) --prune && docker rm $(docker ps -a -f status=exited -q) && docker system prune -a'
+alias dkall="""docker ps -a |cut -d' ' -f1 | xargs -I {} docker stop {} ;\
+            docker ps -a |cut -d' ' -f1 | xargs -I {} docker rm {} ;\
+            docker rm $(docker ps -a -q) ;\
+            docker rmi $(docker images -a -q) --force ;\
+            docker rmi $(docker image ls) && docker rm $(docker ps -a -f status=exited -q) ;\
+            docker volume ls | cut -d ' ' -f6 |xargs -I {} docker volume rm {};\
+            docker system prune -a -f
+            """
 alias d="docker"
 alias dps="docker ps"
 alias wdps="watch docker ps"
 alias drm="docker stop $(docker ps -qa --no-trunc --filter "status=exited")"
 
-
-######################
-######################
+# =============================================================================
 # Stops and delete first container detect
 function rmdo(){
 	IDC=$(docker ps| tail -n +2 | cut -d' ' -f1) ;d stop $IDC ; d rm $IDC 
