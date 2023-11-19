@@ -27,18 +27,11 @@
      group: "{{ username }}"
    with_items:
      - nvim
-     - nvim/plugin/
-     - nvim/lua/
 
- - name: Copy file configuration
-   ansible.builtin.copy:
-     src: "../files/vim/{{ item }}"
-     dest: "/home/{{ username }}/.config/nvim/{{ item }}"
+ - name: Copy all config files
+   copy:
+     src: ../files/nvim
+     dest: "/home/{{ username }}/.config/"
      owner: "{{ username }}"
      group: "{{ username }}"
      mode: '0644'
-   with_items:
-     - init.vim
-
- - name: Install plugins VIM
-   command: vim +'PlugInstall --sync' +qa
