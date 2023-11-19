@@ -29,8 +29,8 @@ exec gnome-terminal
 assign [class="gnome-terminal"] $ws3
 exec blueman-manager
 assign [class="Blueman-manager"] $ws4
-exec pavucontrol
-assign [class="pavucontrol"] $ws4
+#exec pavucontrol
+#assign [class="pavucontrol"] $ws4
 #exec slack
 #assign [class="Slack"] $ws5
 
@@ -66,6 +66,10 @@ exec --no-startup-id /usr/libexec/gsd-mouse
 exec --no-startup-id /usr/libexec/gsd-media-keys
 exec --no-startup-id /usr/libexec/gsd-sound
 exec --no-startup-id /usr/libexec/gsd-backlight-helper
+
+
+# Add volume icon to the status bar
+exec --no-startup-id volumeicon
 
 #Scroll
 exec synclient VertScroll=-79 synclient HorizScroll=-79
@@ -104,6 +108,9 @@ tiling_drag modifier titlebar
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Return exec gnome-terminal
+#bindsym $mod+Return exec gnome-terminal -e tmux
+#bindsym $mod+Return exec xfce4-terminal -e tmux
+
 # Terminal transparency
 exec --no-startup-id picom -CGb
 
