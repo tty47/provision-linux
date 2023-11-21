@@ -43,6 +43,7 @@
      - samba
      - samba-client
      - gh
+     - network-manager-l2tp-gnome
 
  - name: Enale tlp
    command: systemctl enable tlp
