@@ -114,7 +114,7 @@ alias profile="vim ~/.zshrc && source ~/.zshrc"
 alias rprofile="source ~/.zshrc"
 
 # Golang
-export GOVERSION={{ development.golang.version | default(1.15) }}
+export GOVERSION=1.21.3
 export GOROOT=/usr/local/go/go$GOVERSION/go/
 export GOPATH=~/go
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
@@ -169,14 +169,19 @@ alias kke='kubectl kustomize --enable-helm'
 alias kdpvr='kubectl get pv -A | grep Released | cut -d' ' -f1 | xargs -I {} kubectl delete pv {}'
 
 # Docker
-alias dkall="""docker ps -a |cut -d' ' -f1 | xargs -I {} docker stop {} ;\
-            docker ps -a |cut -d' ' -f1 | xargs -I {} docker rm {} ;\
-            docker rm $(docker ps -a -q) ;\
-            docker rmi $(docker images -a -q) --force ;\
-            docker rmi $(docker image ls) && docker rm $(docker ps -a -f status=exited -q) ;\
-            docker volume ls | cut -d ' ' -f6 |xargs -I {} docker volume rm {};\
-            docker system prune -a -f
-            """
+#alias dkall="""
+
+function dkall(){
+  docker ps -a |cut -d' ' -f3 | xargs -I {} docker stop {}
+  docker ps -a |cut -d' ' -f1 | xargs -I {} docker rm {}
+  docker rm $(docker ps -a -q)
+  docker rmi $(docker images -a -q) --force
+  docker rmi $(docker image ls) && docker rm $(docker ps -a -f status=exited -q)
+  docker volume ls | cut -d ' ' -f6 |xargs -I {} docker volume rm {}
+  docker system prune -a -f
+}
+
+#
 alias d="docker"
 alias dps="docker ps"
 alias wdps="watch docker ps"
@@ -233,3 +238,13 @@ function redis_pass(){
 
 # FZF config
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Extra functions and aliases
+[ -f ~/.extra_alias ] && source ~/.extra_alias
+[ -f ~/.extra_functions ] && source ~/.extra_functions
+
+# GPG
+# https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+# in case of issues, try to restart it exeucting:
+# gpgconf --kill gpg-agent
+export GPG_TTY=$(tty)
