@@ -44,6 +44,7 @@
      - samba-client
      - gh
      - network-manager-l2tp-gnome
+     - gparted
 
  - name: Enale tlp
    command: systemctl enable tlp
