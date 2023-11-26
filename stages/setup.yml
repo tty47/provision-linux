@@ -45,6 +45,8 @@
      - gh
      - network-manager-l2tp-gnome
      - gparted
+     - remmina
+     - remmina-plugin-vnc
 
  - name: Enale tlp
    command: systemctl enable tlp
