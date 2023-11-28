@@ -6,6 +6,7 @@
      update_cache: yes
    loop:
      - apt-transport-https
+     - bat
      - unattended-upgrades
      - htop
      - net-tools
