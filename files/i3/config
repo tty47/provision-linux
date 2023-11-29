@@ -25,10 +25,11 @@ for_window [class="^.*"] client.focused          #77dd77 #285577 #ffffff #2e9ef4
 # Set apps to ws
 exec firefox
 assign [class="firefox"] $ws2
-exec gnome-terminal
-assign [class="gnome-terminal"] $ws3
-exec blueman-manager
-assign [class="Blueman-manager"] $ws4
+#exec gnome-terminal
+#assign [class="gnome-terminal"] $ws3
+
+#exec blueman-manager
+#assign [class="Blueman-manager"] $ws4
 #exec pavucontrol
 #assign [class="pavucontrol"] $ws4
 #exec slack
@@ -67,7 +68,6 @@ exec --no-startup-id /usr/libexec/gsd-media-keys
 exec --no-startup-id /usr/libexec/gsd-sound
 exec --no-startup-id /usr/libexec/gsd-backlight-helper
 
-
 # Add volume icon to the status bar
 exec --no-startup-id volumeicon
 
@@ -103,7 +103,7 @@ floating_modifier $mod
 
 # move tiling windows via drag & drop by left-clicking into the title bar,
 # or left-clicking anywhere into the window while holding the floating modifier.
-tiling_drag modifier titlebar
+#tiling_drag modifier titlebar
 
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
@@ -337,4 +337,5 @@ mode "$monitor_side" {
 }
 bindsym $mod+Shift+m mode "(L)eft, (R)igth"
 
+# wallpaper
 exec_always nitrogen --restore
