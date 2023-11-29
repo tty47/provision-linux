@@ -328,8 +328,12 @@ bindsym $mod+Shift+p mode "(S)uspend, (L)ogout, (R)eboot, (P)oweroff"
 # Move monitor to left or rith 
 set $monitor_side (L)eft, (R)igth
 mode "$monitor_side" {
-        bindsym l exec --no-startup-id xrandr --output HDMI-1-1 --auto --left-of eDP-1-1
-        bindsym r exec --no-startup-id xrandr --output HDMI-1-1 --auto --right-of eDP-1-1
+	# update ids
+        bindsym l exec --no-startup-id xrandr --output HDMI-1 --auto --left-of eDP-1
+        bindsym r exec --no-startup-id xrandr --output HDMI-1 --auto --right-of eDP-1
+
+        #bindsym l exec --no-startup-id xrandr --output HDMI-1-1 --auto --left-of eDP-1-1
+        #bindsym r exec --no-startup-id xrandr --output HDMI-1-1 --auto --right-of eDP-1-1
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
