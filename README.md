@@ -14,7 +14,7 @@ make all
 
 ## Execute only the playbook
 ```ansible-playbook
-sudo ansible-playbook main.yml --extra-vars "username=<username>"
+sudo ansible-playbook main.yml --extra-vars "username=$USER"
 ```
 
 ---
