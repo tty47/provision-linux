@@ -48,6 +48,7 @@
      - gparted
      - remmina
      - remmina-plugin-vnc
+     - ripgrep
 
  - name: Enale tlp
    command: systemctl enable tlp
