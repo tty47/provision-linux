@@ -49,6 +49,7 @@
      - remmina
      - remmina-plugin-vnc
      - ripgrep
+     - xrdp
 
  - name: Enale tlp
    command: systemctl enable tlp
