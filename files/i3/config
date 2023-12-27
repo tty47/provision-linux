@@ -325,12 +325,13 @@ mode "$mode_system" {
 }
 bindsym $mod+Shift+p mode "(S)uspend, (L)ogout, (R)eboot, (P)oweroff"
 
-# Move monitor to left or rith 
-set $monitor_side (L)eft, (R)igth
+# Move monitor to left, rigth or top
+set $monitor_side (L)eft, (R)igth, (T)op
 mode "$monitor_side" {
 	# update ids
         bindsym l exec --no-startup-id xrandr --output HDMI-1 --auto --left-of eDP-1
         bindsym r exec --no-startup-id xrandr --output HDMI-1 --auto --right-of eDP-1
+        bindsym t exec --no-startup-id xrandr --output HDMI-1 --auto --above eDP-1
 
         #bindsym l exec --no-startup-id xrandr --output HDMI-1-1 --auto --left-of eDP-1-1
         #bindsym r exec --no-startup-id xrandr --output HDMI-1-1 --auto --right-of eDP-1-1
@@ -339,7 +340,7 @@ mode "$monitor_side" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-bindsym $mod+Shift+m mode "(L)eft, (R)igth"
+bindsym $mod+Shift+m mode "(L)eft, (R)igth, (T)op"
 
 # wallpaper
 exec_always nitrogen --restore
