@@ -17,7 +17,6 @@
      - vlc
      - meld
      - vlc
-     - terminator
      - tlp # Baterry improvements
      - tlp-rdw
      - tmux
