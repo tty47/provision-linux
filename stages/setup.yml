@@ -7,6 +7,7 @@
    loop:
      - apt-transport-https
      - bat
+     - autojump
      - unattended-upgrades
      - htop
      - net-tools
