@@ -8,9 +8,13 @@
    - name: Setup
      import_tasks: "./stages/setup.yml"
      when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+     tags:
+       - setup
    - name: System Configuration
      import_tasks: "./stages/system_configuration.yml"
      when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+     tags:
+       - setup
    - name: GCP tools
      import_tasks: "./stages/gcp.yml"
      when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
@@ -33,3 +37,5 @@
    - name: Tunning
      import_tasks: "./stages/tools_tunning.yml"
      when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+     tags:
+       - tunning
