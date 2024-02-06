@@ -184,8 +184,6 @@ alias kke='kubectl kustomize --enable-helm'
 alias kdpvr='kubectl get pv -A | grep Released | cut -d' ' -f1 | xargs -I {} kubectl delete pv {}'
 
 # Docker
-#alias dkall="""
-
 function dkall(){
   docker ps -a |cut -d' ' -f3 | xargs -I {} docker stop {}
   docker ps -a |cut -d' ' -f1 | xargs -I {} docker rm {}
@@ -196,7 +194,6 @@ function dkall(){
   docker system prune -a -f
 }
 
-#
 alias d="docker"
 alias dps="docker ps"
 alias wdps="watch docker ps"
